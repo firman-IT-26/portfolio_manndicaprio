@@ -274,7 +274,7 @@ section{
     object-fit:cover;
     z-index: -1;
     background: black;
-    filter: blur(7px) brightness(0.50);
+    filter: blur(4px) brightness(0.60);
     transform: scale(1.1);
 }
 
