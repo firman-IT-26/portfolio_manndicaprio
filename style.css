@@ -1238,3 +1238,116 @@ html, body {
     0%, 100% { box-shadow: 0 0 10px rgba(226, 88, 22, 0.3); }
     50% { box-shadow: 0 0 25px var(--main-color, #e25816); }
 }
+
+/* =========================================
+   BAGIAN SOFTWARE & 3 ICON APLIKASI
+========================================= */
+.software-section {
+  margin: 2.5rem 0 3rem;
+}
+/* Judul Heading 2 Software */
+.software-section h2 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+/* Wadah 3 Icon Berjejer Menyamping */
+.software-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+/* Desain Dasar Card Icon Aplikasi */
+.app-card {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+/* 1. Icon Photoshop (Ps) */
+.app-card.ps {
+  background: #001e36;
+  border: 2px solid #31a8ff;
+}
+.app-card.ps span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff; /* Tulisan Ps Berwarna Putih */
+  letter-spacing: -1px;
+}
+/* 2. Icon Illustrator (Ai) */
+.app-card.ai {
+  background: #330000;
+  border: 2px solid #ff9a00;
+}
+.app-card.ai span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff; /* Tulisan Ai Berwarna Putih */
+  letter-spacing: -1px;
+}
+/* 3. Icon Pencil Hijau */
+.app-card.pencil {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: 2px solid #34d399;
+}
+.app-card.pencil i {
+  font-size: 2.8rem;
+  color: #ffffff;
+  transform: rotate(-45deg); /* Posisi pensil miring estetik */
+}
+/* EFEK HOVER (Mengangkat & Memancarkan Cahaya Neon Masing-Masing Aplikasi) */
+.app-card:hover {
+  transform: translateY(-8px) scale(1.12);
+}
+.app-card.ps:hover {
+  box-shadow: 0 10px 25px rgba(49, 168, 255, 0.6);
+}
+.app-card.ai:hover {
+  box-shadow: 0 10px 25px rgba(255, 154, 0, 0.6);
+}
+.app-card.pencil:hover {
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.6);
+}
+/* Penyesuaian Saat Dibuka di HP */
+@media (max-width: 900px) {
+  .software-section h2 {
+    text-align: center;
+  }
+  .software-icons {
+    justify-content: center;
+  }
+}
+
+/* Reset Tulisan Ps agar Putih Solid Murni */
+.app-card.ps span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  letter-spacing: -1px;
+}
+/* Reset Tulisan Ai agar Putih Solid Murni */
+.app-card.ai span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  letter-spacing: -1px;
+}
