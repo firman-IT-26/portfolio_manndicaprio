@@ -614,59 +614,264 @@ html {
   }
 }
 
+/* =========================================
+   BAGIAN SOFTWARE & 3 ICON APLIKASI
+========================================= */
+.software-section {
+  margin: 2.5rem 0 3rem;
+}
+/* Judul Heading 2 Software */
+.software-section h2 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+/* Wadah 3 Icon Berjejer Menyamping */
+.software-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+/* Desain Dasar Card Icon Aplikasi */
+.app-card {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+/* 1. Icon Photoshop (Ps) */
+.app-card.ps {
+  background: #001e36;
+  border: 2px solid #31a8ff;
+}
+.app-card.ps span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff; /* Tulisan Ps Berwarna Putih */
+  letter-spacing: -1px;
+}
+/* 2. Icon Illustrator (Ai) */
+.app-card.ai {
+  background: #330000;
+  border: 2px solid #ff9a00;
+}
+.app-card.ai span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff; /* Tulisan Ai Berwarna Putih */
+  letter-spacing: -1px;
+}
+/* 3. Icon Pencil Hijau */
+.app-card.pencil {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: 2px solid #34d399;
+}
+.app-card.pencil i {
+  font-size: 2.8rem;
+  color: #ffffff;
+  transform: rotate(-45deg); /* Posisi pensil miring estetik */
+}
+/* EFEK HOVER (Mengangkat & Memancarkan Cahaya Neon Masing-Masing Aplikasi) */
+.app-card:hover {
+  transform: translateY(-8px) scale(1.12);
+}
+.app-card.ps:hover {
+  box-shadow: 0 10px 25px rgba(49, 168, 255, 0.6);
+}
+.app-card.ai:hover {
+  box-shadow: 0 10px 25px rgba(255, 154, 0, 0.6);
+}
+.app-card.pencil:hover {
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.6);
+}
+/* Penyesuaian Saat Dibuka di HP */
+@media (max-width: 900px) {
+  .software-section h2 {
+    text-align: center;
+  }
+  .software-icons {
+    justify-content: center;
+  }
+}
+
+/* Reset Tulisan Ps agar Putih Solid Murni */
+.app-card.ps span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  letter-spacing: -1px;
+}
+/* Reset Tulisan Ai agar Putih Solid Murni */
+.app-card.ai span {
+  font-family: Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  letter-spacing: -1px;
+}
+
+/* ========================================================
+   BACKGROUND VIDEO KHUSUS SECTION ABOUT
+======================================================== */
+.about {
+    position: relative; /* Kunci agar video tidak keluar dari About */
+    overflow: hidden;   /* Memotong sisa video agar tidak bocor */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    padding: 80px 10%;
+    z-index: 1;
+}
+/* Video Background Khusus About */
+.about-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Di bawah semua konten About */
+    pointer-events: none;
+}
+/* Lapisan Gelap Tipis (Overlay) agar Teks Tetap Jelas Terbaca */
+.about-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 12, 0.65); /* Atur kegelapan di sini (0.65 = 65% gelap) */
+    z-index: 1;
+    pointer-events: none;
+}
+/* Pastikan Kartu 3D & Teks Berada di Atas Video */
+.about .container,
+.about .about-content {
+    position: relative;
+    z-index: 2;
+}
 
 /* ======================SERVICES====================== */
+/* ========================================================
+   SECTION SERVICES (LIQUID GLASS STYLE)
+======================================================== */
 .heading {
   text-align: center;
   font-size: 6rem;
   margin: 5rem 0 3rem;
   color: #ffffff;
 }
-
 .heading span {
   color: var(--main-color);
 }
-
 .services {
   min-height: 100vh;
   padding: 5rem 9% 8rem;
-  background-color: var(--background-color, #0b0c10);
+  background-color: transparent !important; /* Transparan agar video terlihat */
+  position: relative;
+  overflow: hidden;
 }
-
 /* 1 Container dibagi 3 kolom sama rata */
 .services-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 kolom identik */
-  gap: 3rem; /* Jarak antar kotak */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
   max-width: 1250px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Di atas video */
 }
-
-/* Desain Kotak (Sama persis seperti kotak 1 & 3 di foto) */
+/* =========================================
+   KARTU UTAMA: LIQUID GLASS
+========================================= */
 .services-box {
-  background-color: var(--main-color);
+  position: relative;
   height: 540px;
   border-radius: 3rem;
   cursor: pointer;
-  border: 4px solid transparent;
-  transition: all 0.35s ease-in-out;
-  color: #000000; /* Teks & icon hitam */
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  overflow: hidden;
+  
+  /* 1. Kaca Semi-Transparan */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  
+  /* 2. Efek Buram Membiaskan Video di Belakang (Frosted Glass) */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* 3. Border Tipis Seperti Kristal Kaca */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  /* 4. Pantulan Bevel 3D di Bagian Atas & Bawah */
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-/* Efek Hover (Sama persis seperti kotak tengah di foto yang disentuh mouse) */
+/* 5. Efek Kilauan Air / Cahaya Mengalir (Liquid Sheen Sweep) */
+.services-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.75s ease;
+  pointer-events: none;
+}
+.services-box:hover::before {
+  left: 120%; /* Sapuan kilau melintas saat kursor masuk */
+}
+/* EFEK HOVER: Kaca Lebih Terang, Mengangkat & Bersinar Neon */
 .services-box:hover {
-  background-color: #171311; /* Background gelap */
-  color: var(--main-color); /* Teks dan icon jadi warna aksen */
-  border: 4px solid var(--main-color); /* Border menyala */
-  transform: translateY(-10px); /* Terangkat sedikit ke atas */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.6),
+    0 0 30px var(--main-color),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
-
-/* Konten di dalam kotak */
+/* =========================================
+   KONTEN DI DALAM KARTU
+========================================= */
 .services-info {
   display: flex;
   flex-direction: column;
@@ -675,49 +880,66 @@ html {
   align-items: center; 
   padding: 3rem 2.8rem;
   width: 100%;
+  z-index: 2;
 }
-
+/* Icon Bersinar Neon */
 .services-info i {
   font-size: 5.5rem;
   margin-bottom: 2rem;
-  transition: 0.35s ease-in-out;
+  color: var(--main-color);
+  text-shadow: 0 0 18px var(--main-color);
+  transition: all 0.35s ease-in-out;
 }
-
+.services-box:hover .services-info i {
+  transform: scale(1.1);
+  text-shadow: 0 0 25px var(--main-color);
+}
+/* Judul Layanan */
 .services-info h4 {
   font-size: 2.4rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   transition: 0.35s ease-in-out;
 }
-
+/* Paragraf Deskripsi */
 .services-info p {
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.6;
+  color: #d1d5db;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
   transition: 0.35s ease-in-out;
 }
-
-/* Responsif: Di layar tablet & HP tetap rapi */
+/* Responsif: Di Layar Tablet & HP */
 @media (max-width: 1024px) {
   .services-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 768px) {
   .services-container {
     grid-template-columns: 1fr;
     max-width: 420px;
   }
+  .services-box {
+    height: auto;
+    padding: 3rem 1rem;
+  }
 }
 
-
 /* ======================PROJECTS====================== */
+/* ========================================================
+   SECTION PROJECTS (LIQUID GLASS STYLE)
+======================================================== */
 .project {
-  background-color: #0c0c0e; /* Ganti langsung pakai kode warna ini */
+  background-color: transparent !important; /* Transparan agar video terlihat */
   padding: 6rem 9% 7rem;
+  position: relative;
+  overflow: hidden;
 }
 /* KUNCI 2 BARIS: 3 Kolom x 2 Baris = 6 Project */
 .project-box {
@@ -727,27 +949,75 @@ html {
   row-gap: 4rem; /* Jarak antara baris atas dan baris bawah */
   max-width: 1250px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2; /* Berada di atas video */
 }
-/* Desain Kartu Project */
+/* =========================================
+   KARTU PROJECT: LIQUID GLASS
+========================================= */
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: var(--background-color);
-  border: 2px solid var(--main-color); /* Garis tepi warna oranye sesuai foto */
+  cursor: pointer;
   border-radius: 2.5rem;
   padding: 2.5rem 2rem;
-  cursor: pointer;
-  box-shadow: 0 0 5px var(--main-color);
-  transition: all 0.35s ease-in-out;
+  overflow: hidden;
+  /* 1. Kaca Semi-Transparan */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  /* 2. Efek Buram Membiaskan Video di Belakang (Frosted Glass) */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  /* 3. Border Tipis Kristal Kaca */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* 4. Pantulan Bevel 3D di Bagian Atas & Bawah */
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-/* Efek Hover (Tanpa spasi sebelum :hover agar kotaknya menyala terang) */
+/* 5. Efek Kilauan Air / Cahaya Mengalir (Liquid Sheen Sweep) */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.75s ease;
+  pointer-events: none;
+}
+.project-card:hover::before {
+  left: 120%; /* Kilatan cahaya melintas saat kursor masuk */
+}
+/* EFEK HOVER: Kaca Mengangkat & Bersinar Neon */
 .project-card:hover {
-  border-color: var(--main-color);
-  box-shadow: 0 0 30px var(--main-color), 0 0 60px rgba(250, 250, 249, 0.4);
-  transform: translateY(-8px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.6),
+    0 0 30px var(--main-color),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 /* Gambar Project */
 .project-card img {
@@ -756,6 +1026,11 @@ html {
   border-radius: 1.8rem;
   object-fit: cover;
   margin-bottom: 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.4s ease;
+}
+.project-card:hover img {
+  transform: scale(1.03);
 }
 /* Judul Project */
 .project-card h3 {
@@ -763,6 +1038,7 @@ html {
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 1.2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 /* Paragraf Deskripsi */
 .project-card p {
@@ -770,26 +1046,33 @@ html {
   line-height: 1.6;
   color: #cfd4dc;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
-/* Tombol Review Project */
+/* Tombol Review Project (Liquid Glass Button) */
 .project-card .btn {
   display: inline-block;
-  padding: 0.9rem 2.5rem;
-  background-color: var(--main-color);
-  color: #000000;
+  padding: 0.9rem 2.8rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   border-radius: 3rem;
   font-size: 1.3rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 0 15px var(--main-color);
-  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.35s ease;
   margin-top: auto; /* Tombol selalu rata di bawah */
 }
 .project-card .btn:hover {
-  transform: scale(1.05);
+  background: var(--main-color);
+  border-color: var(--main-color);
+  color: #000000;
+  transform: scale(1.06);
   box-shadow: 0 0 25px var(--main-color);
 }
-/* Responsif: Di layar Tablet jadi 2 kolom, di HP jadi 1 kolom */
+/* Responsif: Di Layar Tablet jadi 2 kolom, di HP jadi 1 kolom */
 @media (max-width: 991px) {
   .project-box {
     grid-template-columns: repeat(2, 1fr);
@@ -800,6 +1083,9 @@ html {
     grid-template-columns: 1fr;
     max-width: 420px;
   }
+  .project-card {
+    padding: 2.5rem 1.5rem;
+  }
 }
 
 /* ======================CONTACT ME====================== */
@@ -807,26 +1093,30 @@ html {
 /* ========================================================
    SECTION CONTACT ME (DESKTOP)
 ======================================================== */
+/* ========================================================
+   SECTION CONTACT ME (BACKGROUND HITAM + LIQUID GLASS FORM)
+======================================================== */
 .contact {
-  background-color: var(--background-color);
+  background-color: #08080a; /* Tetap HITAM pekat & solid */
   padding: 6rem 9% 7rem;
+  position: relative;
 }
-
 .contact h2 {
-  margin-bottom: 3rem;
-  color: var(--text-color);
+  margin-bottom: 3.5rem;
+  color: #ffffff;
   text-align: center;
 }
-
+.contact h2 span {
+  color: var(--main-color);
+}
 .contact form {
   max-width: 800px;
   margin: 1rem auto;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
-
 /* Di Desktop: Nama & Email berdampingan, Phone & Subject berdampingan */
 .contact form .input-box {
   display: flex;
@@ -834,30 +1124,136 @@ html {
   gap: 2rem;
   width: 100%;
 }
-
+/* =========================================
+   INPUT & TEXTAREA: LIQUID GLASS
+========================================= */
 .contact form .input-box input,
 .contact form textarea {
   width: 100%;
-  padding: 1.8rem;
+  padding: 1.8rem 2.2rem;
   font-size: 1.6rem;
-  color: var(--text-color);
-  background-color: var(--background-color);
-  border-radius: 1.5rem;
-  border: 2px solid var(--main-color);
+  color: #ffffff;
+  
+  /* 1. Kaca Semi-Transparan Gelap */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  
+  /* 2. Efek Buram Kaca Cair (Frosted Blur) */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  
+  /* 3. Border Tipis Kristal Kaca */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1.8rem;
+  
+  /* 4. Bevel 3D Pantulan Cahaya Atas & Bayangan Bawah */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    
+  outline: none;
   resize: none;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
+/* Warna Placeholder Tulisan Petunjuk di Dalam Kotak */
+.contact form .input-box input::placeholder,
+.contact form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+/* EFEK SAAT KURSOR MENGKLIK/MENGETIK (FOKUS & NEON GLOW) */
+.contact form .input-box input:focus,
+.contact form textarea:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--main-color);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 0 25px var(--main-color),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
 .contact form textarea {
   margin-top: 0.5rem;
 }
-
+/* =========================================
+   TOMBOL SEND MESSAGE: LIQUID GLASS BUTTON
+========================================= */
 .contact form .btn {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   cursor: pointer;
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 3.5rem;
   font-size: 1.6rem;
+  font-weight: 600;
   display: inline-block;
   align-self: center;
+  border-radius: 3rem;
+  
+  /* Kaca Kapsul Transparan */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    
+  transition: all 0.35s ease;
+}
+/* Efek Hover Tombol Send: Menyala Terang */
+.contact form .btn:hover {
+  background: var(--main-color);
+  border-color: var(--main-color);
+  color: #000000;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--main-color);
+}
+.contact form .btn:active {
+  transform: scale(0.97);
+}
+
+/* ========================================================
+   VIDEO BACKGROUND KHUSUS (ABOUT, SERVICES, PROJECT)
+======================================================== */
+/* 1. Kunci agar video tidak bocor ke luar section */
+.about,
+.services,
+.project {
+    position: relative;
+    overflow: hidden;
+    background: transparent !important; /* WAJIB TRANSPARAN agar video di belakangnya terlihat */
+}
+/* 2. Ukuran Video Memenuhi Section */
+.section-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Di lapisan paling bawah */
+    pointer-events: none;
+}
+/* 3. Lapisan Gelap (Overlay) agar Teks & Tombol Tetap Tajam Terbaca */
+.section-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 15, 0.65); /* 0.65 = 65% kegelapan */
+    z-index: 1;
+    pointer-events: none;
+}
+/* 4. Pastikan Semua Konten Berada di Lapisan Teratas (Di Atas Video & Overlay) */
+.about .container,
+.about .about-content,
+.services .heading,
+.services .services-container,
+.project .heading,
+.project .project-box {
+    position: relative;
+    z-index: 2;
 }
 
 /* ========================================================
@@ -1239,115 +1635,3 @@ html, body {
     50% { box-shadow: 0 0 25px var(--main-color, #e25816); }
 }
 
-/* =========================================
-   BAGIAN SOFTWARE & 3 ICON APLIKASI
-========================================= */
-.software-section {
-  margin: 2.5rem 0 3rem;
-}
-/* Judul Heading 2 Software */
-.software-section h2 {
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-align: left;
-}
-/* Wadah 3 Icon Berjejer Menyamping */
-.software-icons {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-/* Desain Dasar Card Icon Aplikasi */
-.app-card {
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  user-select: none;
-}
-/* 1. Icon Photoshop (Ps) */
-.app-card.ps {
-  background: #001e36;
-  border: 2px solid #31a8ff;
-}
-.app-card.ps span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff; /* Tulisan Ps Berwarna Putih */
-  letter-spacing: -1px;
-}
-/* 2. Icon Illustrator (Ai) */
-.app-card.ai {
-  background: #330000;
-  border: 2px solid #ff9a00;
-}
-.app-card.ai span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff; /* Tulisan Ai Berwarna Putih */
-  letter-spacing: -1px;
-}
-/* 3. Icon Pencil Hijau */
-.app-card.pencil {
-  background: linear-gradient(135deg, #10b981, #059669);
-  border: 2px solid #34d399;
-}
-.app-card.pencil i {
-  font-size: 2.8rem;
-  color: #ffffff;
-  transform: rotate(-45deg); /* Posisi pensil miring estetik */
-}
-/* EFEK HOVER (Mengangkat & Memancarkan Cahaya Neon Masing-Masing Aplikasi) */
-.app-card:hover {
-  transform: translateY(-8px) scale(1.12);
-}
-.app-card.ps:hover {
-  box-shadow: 0 10px 25px rgba(49, 168, 255, 0.6);
-}
-.app-card.ai:hover {
-  box-shadow: 0 10px 25px rgba(255, 154, 0, 0.6);
-}
-.app-card.pencil:hover {
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.6);
-}
-/* Penyesuaian Saat Dibuka di HP */
-@media (max-width: 900px) {
-  .software-section h2 {
-    text-align: center;
-  }
-  .software-icons {
-    justify-content: center;
-  }
-}
-
-/* Reset Tulisan Ps agar Putih Solid Murni */
-.app-card.ps span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  letter-spacing: -1px;
-}
-/* Reset Tulisan Ai agar Putih Solid Murni */
-.app-card.ai span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  letter-spacing: -1px;
-}
