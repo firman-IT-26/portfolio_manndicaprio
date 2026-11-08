@@ -804,77 +804,114 @@ html {
 
 /* ======================CONTACT ME====================== */
 
-.contact{
+/* ========================================================
+   SECTION CONTACT ME (DESKTOP)
+======================================================== */
+.contact {
   background-color: var(--background-color);
+  padding: 6rem 9% 7rem;
 }
 
-.contact h2{
+.contact h2 {
   margin-bottom: 3rem;
   color: var(--text-color);
-}
-
-.contact form{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  margin: 5rem 0;
   text-align: center;
 }
 
-.contact form .input-box input,
-.contact form textarea{
+.contact form {
+  max-width: 800px;
+  margin: 1rem auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Di Desktop: Nama & Email berdampingan, Phone & Subject berdampingan */
+.contact form .input-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
   width: 100%;
-  padding: 2.5rem;
-  font-size: 1.8rem;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+  width: 100%;
+  padding: 1.8rem;
+  font-size: 1.6rem;
   color: var(--text-color);
   background-color: var(--background-color);
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   border: 2px solid var(--main-color);
-  margin: 1.5rem 0;
   resize: none;
 }
 
-.footer{
+.contact form textarea {
+  margin-top: 0.5rem;
+}
+
+.contact form .btn {
+  margin-top: 1rem;
+  cursor: pointer;
+  padding: 1.2rem 3rem;
+  font-size: 1.6rem;
+  display: inline-block;
+  align-self: center;
+}
+
+/* ========================================================
+   SECTION FOOTER
+======================================================== */
+.footer {
   background-color: var(--second-background-color);
   padding: 50px 0;
 }
 
-.footer.social-icons{
+.footer .social-icons {
   text-align: center;
 }
 
-.footer ul{
+.footer ul {
   text-align: center;
   font-size: 1.8rem;
+  margin-top: 2rem;
 }
 
-.footer ul li{
+.footer ul li {
   display: inline-block;
   margin-left: 20px;
 }
 
-.footer ul li a{
+.footer ul li a {
   color: white;
   border-bottom: 3px solid transparent;
-  transition: 0.3 ease-in-out;
-} 
+  transition: 0.3s ease-in-out;
+}
 
-.footer ul li a:hover{
+.footer ul li a:hover {
   border-bottom: 3px solid var(--main-color);
 }
 
-.footer .copyright{
+.footer .copyright {
   text-align: center;
   margin-top: 40px;
   font-size: 16px;
+  color: #a0a0a0;
 }
 
 /* ========================================================
-   RESPONSIF TABLET & LAYAR MENENGAH (Max-Width: 991px)
+   RESPONSIF MOBILE UNTUK SEMUA TIPE HP
 ======================================================== */
+
+/* Mencegah layar goyang / geser ke samping di HP */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* 1. TABLET & IPAD (Max-Width: 991px) */
 @media (max-width: 991px) {
-  /* Ubah ukuran rem dasar agar semua elemen mengecil proporsional */
   html {
     font-size: 55%;
   }
@@ -890,7 +927,6 @@ html {
     color: var(--main-color);
   }
 
-  /* Menu Navbar Dropdown */
   .navbar {
     position: absolute;
     top: 100%;
@@ -899,10 +935,12 @@ html {
     padding: 2rem 3rem;
     background: rgba(10, 10, 14, 0.95);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-bottom-left-radius: 2rem;
     border-left: 2px solid var(--main-color);
     border-bottom: 2px solid var(--main-color);
-    display: none; /* Muncul saat ada class .active */
+    display: none;
+    transition: 0.3s ease;
   }
 
   .navbar.active {
@@ -911,22 +949,20 @@ html {
 
   .navbar a {
     display: block;
-    font-size: 2rem; /* Sudah diperbaiki dari 'font: 2rem' */
+    font-size: 2rem;
     margin: 2.5rem 0;
     color: #ffffff;
   }
 
-  /* Sembunyikan tombol header di HP */
   .gradient-button {
     display: none;
   }
 
-  /* Home Section */
   .home {
     flex-direction: column-reverse;
-    margin: 4rem 0;
+    justify-content: center;
     gap: 4rem;
-    padding: 0 5%;
+    padding: 10rem 5% 5rem;
   }
 
   .home-content {
@@ -935,11 +971,10 @@ html {
   }
 
   .home-img img {
-    width: 65vw;
-    max-width: 320px;
+    width: 60vw;
+    max-width: 300px;
   }
 
-  /* About Section (Kartu 3D di atas, teks di bawah) */
   .about {
     flex-direction: column;
     text-align: center;
@@ -947,7 +982,10 @@ html {
     padding: 6rem 5%;
   }
 
-  /* Services & Projects (Ubah ke 2 Kolom di Tablet) */
+  .about-content {
+    max-width: 100%;
+  }
+
   .services-container,
   .project-box {
     grid-template-columns: repeat(2, 1fr);
@@ -955,15 +993,17 @@ html {
   }
 }
 
-/* ========================================================
-   RESPONSIF MOBILE / SMARTPHONE (Max-Width: 768px)
-======================================================== */
+/* 2. SMARTPHONE / HP STANDAR (Max-Width: 768px) */
 @media (max-width: 768px) {
   html {
-    font-size: 50%; /* Skala teks dan padding mengecil lagi */
+    font-size: 50%;
   }
 
-  /* Navbar Memenuhi Lebar Layar HP */
+  .heading {
+    font-size: 5rem;
+    margin: 3.5rem 0;
+  }
+
   .navbar {
     width: 100%;
     border-bottom-left-radius: 0;
@@ -971,81 +1011,191 @@ html {
     text-align: center;
   }
 
-  /* Home Section */
   .home-content h1 {
-    font-size: 4.5rem;
+    font-size: 4.2rem;
+    line-height: 1.2;
   }
 
   .home-content h3 {
     font-size: 2.4rem;
+    margin: 1rem 0;
+  }
+
+  .home-content p {
+    font-size: 1.4rem;
+    line-height: 1.7;
+    padding: 0 1rem;
+  }
+
+  .social-icons a {
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    margin: 2rem 0.8rem;
   }
 
   .btn-group {
-    flex-direction: row;
+    display: flex;
     justify-content: center;
-    gap: 1.5rem;
-  }
-
-  /* Ukuran Kartu 3D About di Layar HP */
-  .about .container {
-    width: 250px;
-    height: 350px;
-  }
-
-  /* SERVICES: 1 Kolom Rapi ke Bawah */
-  .services {
-    padding: 5rem 5% 6rem;
-  }
-
-  .services-container {
-    grid-template-columns: 1fr; /* 1 Kolom */
-    max-width: 380px;
-    margin: 0 auto;
-  }
-
-  .services-box {
-    height: auto; /* Tinggi fleksibel mengikuti teks di HP */
-    padding: 3rem 1.5rem;
-  }
-
-  /* PROJECTS: 1 Kolom Rapi ke Bawah */
-  .project {
-    padding: 5rem 5% 6rem;
-  }
-
-  .project-box {
-    grid-template-columns: 1fr; /* 1 Kolom */
-    max-width: 380px;
-    margin: 0 auto;
-  }
-
-  .project-card img {
-    height: 180px;
-  }
-}
-
-/* ========================================================
-   RESPONSIF HP LAYAR KECIL (Max-Width: 450px)
-======================================================== */
-@media (max-width: 450px) {
-  .heading {
-    font-size: 4.5rem;
-  }
-
-  .home-content h1 {
-    font-size: 3.8rem;
-  }
-
-  .home-img img {
-    width: 75vw;
+    gap: 1.2rem;
   }
 
   .btn-group .btn {
-    padding: 0.8rem 2rem;
+    margin: 0;
+    padding: 0.9rem 2.2rem;
     font-size: 1.5rem;
+  }
+
+  .about .container {
+    width: 260px;
+    height: 360px;
+    margin: 0 auto;
+  }
+
+  /* Services di HP */
+  .services {
+    padding: 5rem 6% 6rem;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    gap: 3rem;
+  }
+
+  .services-box {
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .services-info {
+    padding: 2rem 1rem;
+  }
+
+  .services-info h4 {
+    font-size: 2.2rem;
+    white-space: normal;
+  }
+
+  .services-info p {
+    font-size: 1.3rem;
+  }
+
+  /* Projects di HP */
+  .project {
+    padding: 5rem 6% 6rem;
+  }
+
+  .project-box {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    gap: 3.5rem;
+  }
+
+  .project-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .project-card img {
+    height: 170px;
+  }
+
+  /* CONTACT FORM DI HP: Urut 1 per 1 ke Bawah (Nama -> Email -> Phone -> Subject -> Message) */
+  .contact {
+    padding: 5rem 5% 6rem;
+  }
+
+  .contact form {
+    max-width: 100%;
+    gap: 1.5rem;
+  }
+
+  .contact form .input-box {
+    flex-direction: column; /* Mengubah 2 kolom menyamping menjadi 1 kolom atas-bawah */
+    gap: 1.5rem;
+  }
+
+  .contact form .input-box input,
+  .contact form textarea {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 1.2rem;
+    margin: 0;
+  }
+
+  .contact form .btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
   }
 }
 
+/* 3. HP LAYAR KECIL (Max-Width: 420px) */
+@media (max-width: 420px) {
+  .header {
+    padding: 1.5rem 4%;
+  }
+
+  .logo {
+    font-size: 2.2rem;
+  }
+
+  .home-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .home-content h3 {
+    font-size: 2rem;
+  }
+
+  .home-img img {
+    width: 70vw;
+  }
+
+  .about .container {
+    width: 240px;
+    height: 330px;
+  }
+
+  .services-container,
+  .project-box {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .btn-group .btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* 4. HP EXTRA KECIL (Max-Width: 360px) */
+@media (max-width: 360px) {
+  html {
+    font-size: 45%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-group .btn {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .about .container {
+    width: 220px;
+    height: 310px;
+  }
+}
+
+/*=======MUSIC=======/
 /* Tombol Musik Melayang di Pojok Kiri Bawah */
 .music-btn {
     position: fixed;
@@ -1066,20 +1216,24 @@ html {
     z-index: 1000; /* Selalu di atas elemen lain */
     transition: all 0.3s ease;
 }
+
 .music-btn i {
     font-size: 2.2rem;
     color: var(--main-color, #e25816);
     transition: transform 0.2s ease;
 }
+
 .music-btn:hover {
     transform: scale(1.1);
     border-color: var(--main-color, #e25816);
     box-shadow: 0 0 20px var(--main-color, #e25816);
 }
+
 /* Animasi Denyut Saat Musik Sedang Menyala */
 .music-btn.playing {
     animation: musicPulse 2s infinite ease-in-out;
 }
+
 @keyframes musicPulse {
     0%, 100% { box-shadow: 0 0 10px rgba(226, 88, 22, 0.3); }
     50% { box-shadow: 0 0 25px var(--main-color, #e25816); }
