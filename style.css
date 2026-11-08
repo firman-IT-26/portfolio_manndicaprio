@@ -273,18 +273,17 @@ section{
     height:100%;
     object-fit:cover;
     z-index: -1;
-    filter: blur(8px);
+    background: black;
+    filter: blur(7px) brightness(0.50);
     transform: scale(1.1);
 }
 
 .bg-video-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 153, 255);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.829);
     z-index: -1;
+    pointer-events: none;
 }
 
 .about{
@@ -292,7 +291,12 @@ section{
     justify-content: center;
     align-items: center;
     gap: 10rem;
-    background-color: var(--second-background-color);
+    background: transparent !important;
+    background-color: transparent !important;
+}
+.about-bg-video,
+.about-overlay {
+    display: none !important;
 }
 
 .about-img img{
@@ -1088,6 +1092,18 @@ html {
   }
 }
 
+/* HILANGKAN BLOK HITAM SERVICES DAN PROJECTS */
+.services .section-overlay,
+.project .section-overlay {
+    display: none !important;
+}
+/* PASTIKAN BACKGROUND KEDUANYA TRANSPARAN */
+.services,
+.project {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
 /* ======================CONTACT ME====================== */
 
 /* ========================================================
@@ -1098,6 +1114,10 @@ html {
 ======================================================== */
 .contact {
   background-color: #08080a; /* Tetap HITAM pekat & solid */
+  padding: 6rem 9% 7rem;
+  position: relative;
+  background: transparent !important;
+  background-color: transparent !important;
   padding: 6rem 9% 7rem;
   position: relative;
 }
@@ -1635,3 +1655,35 @@ html, body {
     50% { box-shadow: 0 0 25px var(--main-color, #e25816); }
 }
 
+/* BACKGROUND MENYATU: SERVICES, PROJECTS, CONTACT */
+.services-project-contact {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.services-project-contact .group-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.services-project-contact .group-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 15, 0.45);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Semua section dibuat transparan */
+.services-project-contact .services,
+.services-project-contact .project,
+.services-project-contact .contact {
+    background: transparent !important;
+    background-color: transparent !important;
+}
