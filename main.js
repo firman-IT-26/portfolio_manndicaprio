@@ -45,3 +45,58 @@ musicToggle.addEventListener("click", (e) => {
         musicIcon.className = "bx bxs-volume-mute";
     }
 });
+
+/* =========================================
+   SCROLL REVEAL ANIMATION
+========================================= */
+
+// Pilih elemen yang akan dianimasikan
+const revealElements = [
+    [".home-content", "reveal-left"],
+    [".home-img", "reveal-right"],
+
+    [".about .container", "reveal-left"],
+    [".about-content", "reveal-right"],
+
+    [".services .heading", "reveal"],
+    [".services-box", "reveal"],
+
+    [".project .heading", "reveal"],
+    [".project-card", "reveal"],
+
+    [".contact .heading", "reveal"],
+    [".contact form", "reveal"],
+
+    [".footer .social-icons", "reveal"],
+    [".footer .list", "reveal"],
+    [".footer .copyright", "reveal"]
+];
+
+// Tambahkan class animasi otomatis
+revealElements.forEach(([selector, animation]) => {
+    document.querySelectorAll(selector).forEach(element => {
+        element.classList.add(animation);
+    });
+});
+
+// Observer untuk mendeteksi scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        } else {
+            entry.target.classList.remove("show");
+        }
+
+    });
+}, {
+    threshold: 0.15
+});
+
+// Jalankan observer
+document.querySelectorAll(
+    ".reveal, .reveal-left, .reveal-right, .reveal-zoom"
+).forEach(element => {
+    observer.observe(element);
+});

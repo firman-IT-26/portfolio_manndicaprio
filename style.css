@@ -17,11 +17,33 @@
 html{
     font-size: 60%;
     overflow-x: hidden;
+        overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body{
     background: var(--background-color);
     color: var(--text-color);
+     overflow-x: hidden;
+    overflow-y: visible;
+    
+}
+/* =================================
+   SINGLE CUSTOM SCROLLBAR
+================================= */
+
+/* Satu scrollbar utama */
+html,
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 .header{
     position: fixed;
@@ -325,23 +347,6 @@ section{
 .about-content .btn{
     margin: 3rem 0;
 }
-
-::-webkit-scrollbar {
-    width: 20px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--main-color);
-}
-
-::-webkit-scrollbar-track {
-    background-color: var(--background-color);
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
 
 
 /* ======================CARD 3D====================== */
@@ -1141,6 +1146,7 @@ html {
 .contact form .input-box {
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
   gap: 2rem;
   width: 100%;
 }
@@ -1150,7 +1156,7 @@ html {
 .contact form .input-box input,
 .contact form textarea {
   width: 100%;
-  padding: 1.8rem 2.2rem;
+  padding: 1.9rem 2.2rem;
   font-size: 1.6rem;
   color: #ffffff;
   
@@ -1686,4 +1692,85 @@ html, body {
 .services-project-contact .contact {
     background: transparent !important;
     background-color: transparent !important;
+}
+
+/* =========================================
+   SCROLL REVEAL ANIMATION
+========================================= */
+
+/* Kondisi awal elemen */
+.reveal {
+    opacity: 0;
+    transform: translateY(70px);
+    filter: blur(5px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.9s ease;
+}
+
+/* Muncul dari kiri */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    filter: blur(5px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Muncul dari kanan */
+.reveal-right {
+    opacity: 0;
+    transform: translateX(80px);
+    filter: blur(5px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Muncul dengan zoom */
+.reveal-zoom {
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(5px);
+    transition: all 1s ease;
+}
+
+/* Kondisi ketika terlihat */
+.reveal.show,
+.reveal-left.show,
+.reveal-right.show,
+.reveal-zoom.show {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: blur(0);
+}
+
+/* Animasi bertahap Services */
+.services-box:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.services-box:nth-child(2) {
+    transition-delay: 0.25s;
+}
+
+.services-box:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+/* Animasi bertahap Projects */
+.project-card:nth-child(1) { transition-delay: 0.1s; }
+.project-card:nth-child(2) { transition-delay: 0.2s; }
+.project-card:nth-child(3) { transition-delay: 0.3s; }
+.project-card:nth-child(4) { transition-delay: 0.1s; }
+.project-card:nth-child(5) { transition-delay: 0.2s; }
+.project-card:nth-child(6) { transition-delay: 0.3s; }
+
+/* Menghormati pengaturan pengurangan animasi */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-zoom {
+        transition: none;
+        filter: none;
+    }
 }
