@@ -11,7 +11,7 @@
     --background-color: #000000;
     --second-background-color: #0a0a0a;
     --text-color: #fdfdfd;
-    --main-color: #85a8c2;
+    --main-color: #ffffff;
 }
 
 html{
@@ -45,19 +45,28 @@ body::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
-.header{
+.header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem 15%;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    padding: 1.5rem 3rem;
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
 
+    z-index: 1000;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 #menu-icon{
@@ -81,26 +90,35 @@ body::-webkit-scrollbar {
 span {
     background: linear-gradient(
         270deg,
-        #95b4c9 10%,
-        #4e6a7f 100%
+        #f3f3f3 10%,
+        #696868 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.navbar a{
-    font-size: 1.6rem;
-    color: var(--text-color);
-    margin-left: 4rem;
-    font-weight: 500;   
-    transition: 0.3s ease-in-out;
-    border-bottom: 3px solid transparent;
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
-.navbar a:hover{
+.navbar a {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-left: 0;
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+    border-radius: 30px;
+    border-bottom: none;
+}
+
+.navbar a:hover {
     color: var(--main-color);
-    border-bottom: 3px solid var(--main-color);
+    background: rgba(149, 180, 201, 0.15);
+    border-bottom: none;
 }
 
 .gradient-button {
@@ -211,7 +229,7 @@ section{
 
 .social-icons a:hover{
     color: var(--text-color);
-    background-color: var(--main-color);
+    background-color: var(--second-background-color);
     transform: scale(1.2)translateY(-5px);
     box-shadow: 0 0 25px var(--main-color);
 }
@@ -271,12 +289,12 @@ section{
     
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.4),
-        0 0 15px rgba(109, 178, 223, 0.2),
+        0 0 15px rgba(56, 56, 56, 0.2),
         inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 .btn-group a:nth-of-type(2):hover {
     transform: scale(1.05);
-    background: rgba(109, 178, 223, 0.2);
+    background: rgba(133, 133, 133, 0.2);
     border-color: var(--main-color);
     color: #ffffff;
     box-shadow: 
@@ -296,7 +314,7 @@ section{
     object-fit:cover;
     z-index: -1;
     background: black;
-    filter: blur(4px) brightness(0.60);
+    filter: blur(2px) brightness(0.60);
     transform: scale(1.1);
 }
 
@@ -502,7 +520,7 @@ section{
   position: absolute;
   width: 15px;
   height: 15px;
-  border: 2px solid #85a8c2;
+  border: 2px solid #ffffff;
   z-index: 5;
   transition: all 0.3s ease;
 }
@@ -511,14 +529,14 @@ section{
 .corner-elements span:nth-child(3) { bottom: 12px; left: 12px; border-right: 0; border-top: 0; }
 .corner-elements span:nth-child(4) { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
 #card:hover .corner-elements span {
-  border-color: rgba(92, 103, 255, 0.9);
-  box-shadow: 0 0 10px #85a8c2;
+  border-color: rgba(245, 245, 247, 0.9);
+  box-shadow: 0 0 10px #5e6163;
 }
 /* Scan Line */
 .scan-line {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent, #85a8c277, transparent);
+  background: linear-gradient(to bottom, transparent, #acacac77, transparent);
   z-index: 4;
   animation: scanMove 2.5s linear infinite;
 }
@@ -535,31 +553,35 @@ section{
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 2px;
-  color: #85a8c2;
+  color: #e9eaec;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
   z-index: 10;
   transition: 300ms ease;
 }
+
+
 .title {
   opacity: 0;
   position: absolute;
-  top: 25px;
+  top: 20px;
   width: 100%;
-  font-size: 24px;
+  font-size: 15px;
   font-weight: 800;
   letter-spacing: 3px;
   text-align: center;
   background: linear-gradient(45deg, #ebe7e7, #585858);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 15px rgba(0, 255, 170, 0.4));
+  filter: drop-shadow(0 0 15px rgba(233, 238, 236, 0.4));
   z-index: 10;
   transition: 300ms ease-in-out;
   font-family: 'Poppins', sans-serif;
 }
+
+
 .subtitle {
   position: absolute;
-  bottom: 25px;
+  bottom: 10px;
   width: 100%;
   text-align: center;
   font-size: 12px;
@@ -568,9 +590,9 @@ section{
   z-index: 10;
 }
 .highlight {
-  color: #161515;
+  color: #f7f5f5;
   margin-left: 5px;
-  background: linear-gradient(90deg, #161616, #3a3b3b);
+  background: linear-gradient(90deg, #d6d5d5, #e4e7e7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -1773,4 +1795,53 @@ html, body {
         transition: none;
         filter: none;
     }
+}
+
+/* =========================================
+   SCROLL REVEAL ANIMATION - FAST
+========================================= */
+
+/* Kondisi awal */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    filter: blur(2px);
+    transition: 
+        opacity 0.4s ease,
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-35px);
+    transition: 
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(35px);
+    transition: 
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.reveal-zoom {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: 
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+/* Kondisi saat muncul */
+.reveal.show,
+.reveal-left.show,
+.reveal-right.show,
+.reveal-zoom.show {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: blur(0);
 }

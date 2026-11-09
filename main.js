@@ -91,7 +91,7 @@ const observer = new IntersectionObserver((entries) => {
 
     });
 }, {
-    threshold: 0.15
+    threshold: 0.10
 });
 
 // Jalankan observer
