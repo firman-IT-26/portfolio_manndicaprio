@@ -11,6 +11,43 @@
 </head>
 <body>
 
+    <!-- CINEMATIC INTRO -->
+    <div class="cinematic-intro" id="cinematicIntro">
+
+        <div class="intro-noise"></div>
+        <div class="intro-light"></div>
+
+        <div class="intro-content">
+
+            <p class="intro-label">WELCOME</p>
+
+            <h1 class="intro-title">
+                MANNDICAPRIO
+            </h1>
+
+            <div class="intro-line"></div>
+
+            <p class="intro-subtitle">
+                GRAPHIC DESIGNER
+                <span>—</span>
+                CREATIVE PORTFOLIO
+            </p>
+
+            <button class="intro-button" id="enterPortfolio">
+                ENTER PORTFOLIO
+                <i class='bx bx-right-arrow-alt'></i>
+            </button>
+
+        </div>
+
+        <div class="intro-footer">
+            <span>EST. 2026</span>
+            <span>DESIGNED BY MANN DICAPRIO</span>
+        </div>
+
+    </div>
+    <!-- END CINEMATIC INTRO -->
+
     <video autoplay muted loop class="bg-video">
         <source src="assets/video/wave.mp4" type="video/mp4">
     </video>
@@ -172,44 +209,95 @@ and premium print ready manufacturing standards."</P>
             <img src="assets/image/project 2.png" alt="Project 1">
             <h3>Portfolio 2026</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora voluptate provident quo quas voluptatibus dignissimos consequuntur quae hic cupiditate corporis.</p>
-            <a href="#" class="btn">Review Project</a>
+            <a href="#" class="btn review-project"
+               data-title="Portfolio 2026"
+               data-images="assets/image/2.png | assets/image/3.png | assets/image/4.png | assets/image/5.png | assets/image/6.png | assets/image/7.png | assets/image/8.png | assets/image/9.png | assets/image/10.png | assets/image/11.png | assets/image/12.png | assets/image/13.png | assets/image/14.png | assets/image/15.png | assets/image/16.png | assets/image/17.png | assets/image/18.png | assets/image/19.png | assets/image/20.png">
+               Review Project
+            </a>
         </div>
         <!-- Project 2 -->
         <div class="project-card">
             <img src="assets/image/project 1.jpg" alt="Project 2">
             <h3>Logo Branding</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora voluptate provident quo quas voluptatibus dignissimos consequuntur quae hic cupiditate corporis.</p>
-            <a href="#" class="btn">Review Project</a>
+            <a href="#" class="btn review-project"
+               data-title="Portfolio 2026"
+               data-images="assets/image/logo unpam 1.jpg | assets/image/logo unpam 2.jpg | assets/image/logo unpam 3.jpg | assets/image/logo unpam 4.jpg | assets/image/logo unpam 5.jpg | assets/image/logo unpam 6.jpg | assets/image/logo unpam 7.jpg | assets/image/logo unpam 8.jpg | assets/image/logo unpam 9.jpg | assets/image/logo unpam 10.jpg | assets/image/logo unpam 11.jpg | assets/image/logo unpam 12.jpg | assets/image/logo unpam 13.jpg | assets/image/logo unpam 14.jpg ">
+               Review Project
+            </a>
         </div>
         <!-- Project 3 -->
         <div class="project-card">
             <img src="assets/image/project 1.jpg" alt="Project 3">
             <h3>Jersey design</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora voluptate provident quo quas voluptatibus dignissimos consequuntur quae hic cupiditate corporis.</p>
-            <a href="#" class="btn">Review Project</a>
+            <a href="#" class="btn review-project"
+               data-title="Portfolio 2026"
+               data-images="assets/image/2.png ">
+               Review Project
+            </a>
         </div>
         <!-- Project 4 -->
         <div class="project-card">
             <img src="assets/image/project 1.jpg" alt="Project 4">
             <h3>Logo Branding</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora voluptate provident quo quas voluptatibus dignissimos consequuntur quae hic cupiditate corporis.</p>
-            <a href="#" class="btn">Review Project</a>
+            <a href="#" class="btn review-project"
+               data-title="Portfolio 2026"
+               data-images="assets/image/2.png ">
+               Review Project
+            </a>
         </div>
         <!-- Project 5 -->
         <div class="project-card">
             <img src="assets/image/project 1.jpg" alt="Project 5">
             <h3>Poster Design</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora voluptate provident quo quas voluptatibus dignissimos consequuntur quae hic cupiditate corporis.</p>
-            <a href="#" class="btn">Review Project</a>
+            <a href="#" class="btn review-project"
+               data-title="Portfolio 2026"
+               data-images="assets/image/2.png ">
+               Review Project
+            </a>
         </div>
         <!-- Project 6 -->
         <div class="project-card">
             <img src="assets/image/project 1.jpg" alt="Project 6">
             <h3>Banner Design</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam in tempora voluptate provident quo quas voluptatibus dignissimos consequuntur quae hic cupiditate corporis.</p>
-            <a href="#" class="btn">Review Project</a>
+            <a href="#" class="btn review-project"
+               data-title="Portfolio 2026"
+               data-images="assets/image/2.png ">
+               Review Project
+            </a>
             </div>
         </div>
+
+        <!-- POPUP REVIEW PROJECT -->
+    <div class="project-modal" id="projectModal">
+
+        <div class="modal-content">
+
+            <button class="modal-close" id="modalClose">&times;</button>
+
+            <h2 id="modalTitle">Project Preview</h2>
+
+            <div class="modal-gallery" id="modalGallery"></div>
+
+        </div>
+
+    </div>
+
+    <!-- POPUP GAMBAR BESAR -->
+    <div class="image-lightbox" id="imageLightbox">
+
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+
+        <img src="" id="lightboxImage" alt="Preview Project">
+
+    </div>
+
+</div>
+
     </section>
 
     <!-- INI BAGIAN CONTACT -->

@@ -314,7 +314,7 @@ section{
     object-fit:cover;
     z-index: -1;
     background: black;
-    filter: blur(2px) brightness(0.60);
+    filter: blur(1px) brightness(0.60);
     transform: scale(1.1);
 }
 
@@ -1844,4 +1844,444 @@ html, body {
     opacity: 1;
     transform: translate(0, 0) scale(1);
     filter: blur(0);
+}
+
+/* ======Project saya brayy======*/
+/* =========================================
+   PROJECT REVIEW MODAL
+========================================= */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.project-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 85vh;
+    overflow-y: auto;
+
+    padding: 4rem;
+    border-radius: 2.5rem;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+
+    animation: modalShow 0.4s ease;
+}
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-content h2 {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+
+    background: transparent;
+    border: none;
+    color: white;
+
+    font-size: 4rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+    color: #aaa;
+}
+
+/* Gallery */
+
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.modal-gallery img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+
+    padding: 1rem;
+    border-radius: 1.5rem;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    transition: 0.35s ease;
+}
+
+.modal-gallery img:hover {
+    transform: scale(1.04);
+    border-color: white;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .project-modal {
+        padding: 1.5rem;
+    }
+
+    .modal-content {
+        padding: 4rem 1.5rem 2rem;
+    }
+
+    .modal-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-gallery img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* IMAGE LIGHTBOX */
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+}
+
+.image-lightbox.active {
+    display: flex;
+}
+
+.image-lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 1.5rem;
+    animation: zoomImage 0.3s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 5rem;
+    cursor: pointer;
+    z-index: 3001;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+    color: #aaa;
+}
+
+@keyframes zoomImage {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   CINEMATIC DESIGNER INTRO
+========================================= */
+
+.cinematic-intro {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: #030303;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 99999;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+/* INTRO HIDDEN */
+.cinematic-intro.hide-intro {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* LIGHT EFFECT */
+.intro-light {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+        circle,
+        rgba(255,255,255,0.09) 0%,
+        rgba(255,255,255,0.025) 35%,
+        transparent 70%
+    );
+    filter: blur(30px);
+    animation: introLight 5s ease-in-out infinite alternate;
+}
+
+@keyframes introLight {
+    from {
+        transform: scale(0.8);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* NOISE TEXTURE */
+.intro-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+/* MAIN CONTENT */
+.intro-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+/* SMALL LABEL */
+.intro-label {
+    color: #888;
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+    opacity: 0;
+    animation: introFade 1s ease forwards 0.5s;
+}
+
+/* MAIN TITLE */
+.intro-title {
+    font-size: clamp(4rem, 9vw, 11rem);
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #fff;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: titleReveal 1.5s cubic-bezier(.16,1,.3,1) forwards 0.9s;
+    font-family: AQUIRE;
+}
+
+.intro-title span {
+    background: linear-gradient(
+        180deg,
+        #ffffff,
+        #777777
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* LINE */
+.intro-line {
+    width: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #fff,
+        transparent
+    );
+    margin: 30px auto;
+    animation: lineReveal 1.2s ease forwards 1.8s;
+}
+
+/* SUBTITLE */
+.intro-subtitle {
+    color: #aaa;
+    font-size: 1.3rem;
+    letter-spacing: 5px;
+    opacity: 0;
+    animation: introFade 1s ease forwards 2.1s;
+}
+
+.intro-subtitle span {
+    color: #fff;
+    margin: 0 8px;
+}
+
+/* ENTER BUTTON */
+.intro-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 55px;
+    padding: 15px 35px;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    opacity: 0;
+    animation: introFade 1s ease forwards 2.7s;
+    transition: all 0.4s ease;
+}
+
+.intro-button i {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.intro-button:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    transform: translateY(-4px);
+}
+
+.intro-button:hover i {
+    transform: translateX(5px);
+}
+
+/* FOOTER */
+.intro-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: introFade 1s ease forwards 3s;
+}
+
+/* ANIMATIONS */
+@keyframes introFade {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes titleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineReveal {
+    to {
+        width: 180px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .intro-title {
+        font-size: 4.5rem;
+        letter-spacing: 3px;
+    }
+
+    .intro-label {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+    }
+
+    .intro-subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .intro-footer {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    .intro-button {
+        font-size: 1rem;
+        padding: 13px 25px;
+    }
+}
+
+/* REDUCE MOTION */
+@media (prefers-reduced-motion: reduce) {
+    .cinematic-intro *,
+    .cinematic-intro {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }

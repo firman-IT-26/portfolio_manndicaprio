@@ -100,3 +100,136 @@ document.querySelectorAll(
 ).forEach(element => {
     observer.observe(element);
 });
+
+/* =========================================
+   PROJECT REVIEW MODAL
+========================================= */
+
+const projectModal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalGallery = document.getElementById("modalGallery");
+const modalClose = document.getElementById("modalClose");
+
+const reviewButtons = document.querySelectorAll(".review-project");
+
+// Buka modal
+reviewButtons.forEach(button => {
+
+    button.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        const title = button.dataset.title;
+        const images = button.dataset.images.split("|");
+
+        modalTitle.textContent = title;
+        modalGallery.innerHTML = "";
+
+        images.forEach(src => {
+
+            const img = document.createElement("img");
+
+            img.src = src.trim();
+            img.alt = title;
+
+            modalGallery.appendChild(img);
+
+        });
+
+        projectModal.classList.add("active");
+        document.body.classList.add("modal-open");
+
+    });
+
+});
+
+// Tutup modal
+function closeProjectModal() {
+
+    projectModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+
+}
+
+modalClose.addEventListener("click", closeProjectModal);
+
+// Tutup ketika klik area luar
+projectModal.addEventListener("click", (e) => {
+
+    if (e.target === projectModal) {
+        closeProjectModal();
+    }
+
+});
+
+// Tutup menggunakan tombol Escape
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+        closeProjectModal();
+    }
+
+});
+
+// IMAGE LIGHTBOX
+const imageLightbox = document.getElementById("imageLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+
+// Klik gambar untuk memperbesar
+modalGallery.addEventListener("click", function(e) {
+    if (e.target.tagName === "IMG") {
+        lightboxImage.src = e.target.src;
+        imageLightbox.classList.add("active");
+    }
+});
+
+// Tutup lightbox
+function closeLightbox() {
+    imageLightbox.classList.remove("active");
+    lightboxImage.src = "";
+}
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+imageLightbox.addEventListener("click", function(e) {
+    if (e.target === imageLightbox) {
+        closeLightbox();
+    }
+});
+
+// Tombol ESC
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        closeLightbox();
+    }
+});
+
+/* =========================================
+   CINEMATIC INTRO CONTROLLER
+========================================= */
+
+const cinematicIntro = document.getElementById("cinematicIntro");
+const enterPortfolio = document.getElementById("enterPortfolio");
+
+if (cinematicIntro && enterPortfolio) {
+
+    // Kunci scroll saat opening tampil
+    document.body.style.overflow = "hidden";
+
+    enterPortfolio.addEventListener("click", () => {
+
+        // Hilangkan opening
+        cinematicIntro.classList.add("hide-intro");
+
+        // Kembalikan scroll website
+        document.body.style.overflow = "";
+
+        // Hapus intro setelah transisi selesai
+        setTimeout(() => {
+            cinematicIntro.remove();
+        }, 1300);
+
+    });
+
+}
