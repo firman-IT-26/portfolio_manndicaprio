@@ -112,7 +112,40 @@ const modalClose = document.getElementById("modalClose");
 
 const reviewButtons = document.querySelectorAll(".review-project");
 
-// Buka modal
+
+/* =========================================
+   MASONRY GALLERY FUNCTION
+========================================= */
+
+function resizeGalleryItems() {
+
+    const rowHeight = 5;
+    const styles = getComputedStyle(modalGallery);
+    const gap = parseFloat(styles.rowGap);
+
+    modalGallery.querySelectorAll("img").forEach(img => {
+
+        const height = img.getBoundingClientRect().height;
+
+        if (height > 0) {
+
+            const span = Math.ceil(
+                (height + gap) / (rowHeight + gap)
+            );
+
+            img.style.gridRowEnd = `span ${span}`;
+
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   BUKA MODAL
+========================================= */
+
 reviewButtons.forEach(button => {
 
     button.addEventListener("click", (e) => {
@@ -127,10 +160,14 @@ reviewButtons.forEach(button => {
 
         images.forEach(src => {
 
+            if (!src.trim()) return;
+
             const img = document.createElement("img");
 
             img.src = src.trim();
             img.alt = title;
+
+            img.addEventListener("load", resizeGalleryItems);
 
             modalGallery.appendChild(img);
 
@@ -139,11 +176,29 @@ reviewButtons.forEach(button => {
         projectModal.classList.add("active");
         document.body.classList.add("modal-open");
 
+        // Hitung ulang setelah modal tampil
+        requestAnimationFrame(resizeGalleryItems);
+
     });
 
 });
 
-// Tutup modal
+
+/* =========================================
+   RESPONSIVE MASONRY
+========================================= */
+
+window.addEventListener("resize", () => {
+
+    requestAnimationFrame(resizeGalleryItems);
+
+});
+
+
+/* =========================================
+   TUTUP MODAL
+========================================= */
+
 function closeProjectModal() {
 
     projectModal.classList.remove("active");
@@ -153,7 +208,11 @@ function closeProjectModal() {
 
 modalClose.addEventListener("click", closeProjectModal);
 
-// Tutup ketika klik area luar
+
+/* =========================================
+   TUTUP KETIKA KLIK AREA LUAR
+========================================= */
+
 projectModal.addEventListener("click", (e) => {
 
     if (e.target === projectModal) {
@@ -162,7 +221,11 @@ projectModal.addEventListener("click", (e) => {
 
 });
 
-// Tutup menggunakan tombol Escape
+
+/* =========================================
+   TUTUP MENGGUNAKAN TOMBOL ESCAPE
+========================================= */
+
 document.addEventListener("keydown", (e) => {
 
     if (e.key === "Escape") {
