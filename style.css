@@ -1945,6 +1945,15 @@ body.modal-open {
     align-items: start;
 }
 
+/* ===== PROJECT GALLERY ===== */
+
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
 .modal-gallery img {
     display: block;
     width: 100%;
@@ -1978,6 +1987,10 @@ body.modal-open {
     .modal-gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.7rem;
+    }
+
+    .modal-gallery img {
+        max-height: none;
     }
 }
 
