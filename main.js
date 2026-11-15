@@ -502,3 +502,35 @@ if (homeCard) {
     });
 
 }
+
+const techText = document.getElementById("techText");
+
+const characters = "!@#$%^&*(_+";
+
+techText.addEventListener("mouseenter", () => {
+    let iteration = 0;
+    const originalText = "Firmansyh";
+
+    clearInterval(techText.interval);
+
+    techText.interval = setInterval(() => {
+        techText.innerText = originalText
+            .split("")
+            .map((letter, index) => {
+                if (index < iteration) {
+                    return originalText[index];
+                }
+
+                return characters[
+                    Math.floor(Math.random() * characters.length)
+                ];
+            })
+            .join("");
+
+        if (iteration >= originalText.length) {
+            clearInterval(techText.interval);
+        }
+
+        iteration += 0.5;
+    }, 30);
+});

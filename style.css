@@ -80,16 +80,39 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.logo{
+.logo {
     font-size: 3rem;
     color: var(--text-color);
     font-weight: 800;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     transition: 0.3s ease-in-out;
 }
 
-.logo:hover{
-    transform: scale(1.1);
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.tech-text {
+    display: inline-block;
+    background: linear-gradient(
+        90deg,
+        #f7f5f5,
+        #646464,
+        #f7f7f7
+    );
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.4s ease;
+}
+
+.tech-text:hover {
+    background-position: 100%;
+    letter-spacing: 3px;
+    filter: drop-shadow(0 0 8px #fdfdfd);
 }
 
 span {
@@ -122,7 +145,7 @@ span {
 
 .navbar a:hover {
     color: var(--main-color);
-    background: rgba(149, 180, 201, 0.15);
+    background: rgba(243, 244, 245, 0.15);
     border-bottom: none;
 }
 
@@ -2304,8 +2327,8 @@ body.modal-open {
 /* NEON GLOW CURSOR */
 .custom-cursor {
     position: fixed;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border: 1px solid var(--main-color);
     border-radius: 90%;
     pointer-events: none;
@@ -2318,9 +2341,9 @@ body.modal-open {
         0 0 22px var(--main-color);
 
     transition:
-        width 0.1s ease,
-        height 0.1s ease,
-        box-shadow 0.1s ease;
+        width 0.6s ease,
+        height 0.6s ease,
+        box-shadow 0.6s ease;
 }
 
 /* TITIK TENGAH */
@@ -2339,8 +2362,8 @@ body.modal-open {
 
 /* SAAT MOUSE DI ATAS TOMBOL/LINK */
 .custom-cursor.hover {
-    width: 34px;
-    height: 34px;
+    width: 24px;
+    height: 24px;
 
     box-shadow:
         0 0 8px var(--main-color),
