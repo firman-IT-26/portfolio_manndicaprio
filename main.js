@@ -296,3 +296,90 @@ if (cinematicIntro && enterPortfolio) {
     });
 
 }
+
+/* =====================================
+   CUSTOM CURSOR ANIMATION
+===================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Aktif hanya untuk perangkat dengan mouse
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
+    const cursor = document.querySelector(".custom-cursor");
+    const dot = document.querySelector(".cursor-dot");
+
+    if (!cursor || !dot) return;
+
+    document.body.classList.add("custom-cursor-enabled");
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let cursorX = 0;
+    let cursorY = 0;
+
+    document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        dot.style.left = mouseX + "px";
+        dot.style.top = mouseY + "px";
+    });
+
+    // Animasi cursor smooth
+    function animateCursor() {
+
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+
+        cursor.style.left = cursorX + "px";
+        cursor.style.top = cursorY + "px";
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    // Efek hover
+    document.addEventListener("mouseover", (e) => {
+
+        if (e.target.closest(
+            "a, button, input, textarea, select, .project-card, .app-card"
+        )) {
+            cursor.classList.add("hover");
+        }
+
+    });
+
+    document.addEventListener("mouseout", (e) => {
+
+        if (e.target.closest(
+            "a, button, input, textarea, select, .project-card, .app-card"
+        )) {
+            cursor.classList.remove("hover");
+        }
+
+    });
+
+    // Efek klik
+    document.addEventListener("mousedown", () => {
+        cursor.classList.add("click");
+    });
+
+    document.addEventListener("mouseup", () => {
+        cursor.classList.remove("click");
+    });
+
+    // Sembunyikan ketika mouse keluar halaman
+    document.addEventListener("mouseleave", () => {
+        cursor.style.opacity = "0";
+        dot.style.opacity = "0";
+    });
+
+    document.addEventListener("mouseenter", () => {
+        cursor.style.opacity = "1";
+        dot.style.opacity = "1";
+    });
+
+});

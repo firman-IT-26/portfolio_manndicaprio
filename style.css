@@ -2291,3 +2291,116 @@ body.modal-open {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =====================================
+   CUSTOM CURSOR ANIMATION
+===================================== */
+
+@media (pointer: fine) {
+    body.custom-cursor-enabled,
+    body.custom-cursor-enabled * {
+        cursor: none !important;
+    }
+
+    .custom-cursor,
+    .cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 99999;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .custom-cursor {
+        width: 35px;
+        height: 35px;
+        border: 1.5px solid #ffffff;
+        transition:
+            width 0.25s ease,
+            height 0.25s ease,
+            background 0.25s ease;
+    }
+
+    .cursor-dot {
+        width: 5px;
+        height: 5px;
+        background: #ffffff;
+    }
+
+    .custom-cursor.hover {
+        width: 60px;
+        height: 60px;
+        background: rgba(255,255,255,0.12);
+    }
+
+    .custom-cursor.click {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (pointer: fine) {
+
+    body.custom-cursor-enabled,
+    body.custom-cursor-enabled * {
+        cursor: none !important;
+    }
+
+    .custom-cursor,
+    .cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 99999;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Lingkaran utama */
+    .custom-cursor {
+        width: 24px;
+        height: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+
+        box-shadow:
+            0 0 5px rgba(255, 255, 255, 0.5),
+            0 0 12px rgba(255, 255, 255, 0.25);
+
+        transition:
+            width 0.25s ease,
+            height 0.25s ease,
+            background 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    /* Titik tengah */
+    .cursor-dot {
+        width: 7px;
+        height: 7px;
+        background: #f3f3f3;
+
+        box-shadow:
+            0 0 5px #ffffff,
+            0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Efek hover */
+    .custom-cursor.hover {
+        width: 34px;
+        height: 34px;
+        background: rgba(255, 255, 255, 0.08);
+
+        box-shadow:
+            0 0 8px rgba(236, 233, 233, 0.7),
+            0 0 18px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Efek klik */
+    .custom-cursor.click {
+        width: 19px;
+        height: 19px;
+    }
+}
