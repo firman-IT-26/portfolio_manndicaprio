@@ -173,14 +173,14 @@ section{
     padding: 10rem 15%;
 }
 
-.home{
+.home {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15rem;
+    gap: 20rem;
 }
 
-.home-content{
+.home-content {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -216,19 +216,6 @@ section{
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.8;
-}
-
-.home-img img{
-    width: 32vw;
-    border-radius: 50%;
-    box-shadow: 0 0 25px var(--main-color);
-    transition: 0.4s ease-in-out;
-}
-
-.home-img img:hover{
-    box-shadow: 0 0 25px var(--main-color);
-    box-shadow: 0 0 50px var(--main-color);
-    box-shadow: 0 0 100px var(--main-color);
 }
 
 .social-icons a{
@@ -1433,7 +1420,7 @@ html, body {
   }
 
   .home-img img {
-    width: 60vw;
+    width: vw;
     max-width: 300px;
   }
 
@@ -2314,111 +2301,183 @@ body.modal-open {
    CUSTOM CURSOR ANIMATION
 ===================================== */
 
-@media (pointer: fine) {
-    body.custom-cursor-enabled,
-    body.custom-cursor-enabled * {
-        cursor: none !important;
-    }
+/* NEON GLOW CURSOR */
+.custom-cursor {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--main-color);
+    border-radius: 90%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    
+    box-shadow:
+        0 0 5px var(--main-color),
+        0 0 12px var(--main-color),
+        0 0 22px var(--main-color);
 
-    .custom-cursor,
-    .cursor-dot {
-        position: fixed;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        z-index: 99999;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-    }
+    transition:
+        width 0.1s ease,
+        height 0.1s ease,
+        box-shadow 0.1s ease;
+}
 
-    .custom-cursor {
-        width: 35px;
-        height: 35px;
-        border: 1.5px solid #ffffff;
-        transition:
-            width 0.25s ease,
-            height 0.25s ease,
-            background 0.25s ease;
-    }
+/* TITIK TENGAH */
+.cursor-dot {
+    position: fixed;
+    width: 7px;
+    height: 7px;
+    background: var(--main-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100000;
 
-    .cursor-dot {
-        width: 5px;
-        height: 5px;
-        background: #ffffff;
-    }
+    box-shadow: 0 0 8px var(--main-color);
+    transform: translate(-50%, -50%);
+}
 
-    .custom-cursor.hover {
-        width: 60px;
-        height: 60px;
-        background: rgba(255,255,255,0.12);
-    }
+/* SAAT MOUSE DI ATAS TOMBOL/LINK */
+.custom-cursor.hover {
+    width: 34px;
+    height: 34px;
 
-    .custom-cursor.click {
-        width: 25px;
-        height: 25px;
+    box-shadow:
+        0 0 8px var(--main-color),
+        0 0 18px var(--main-color),
+        0 0 35px var(--main-color);
+}
+
+/* SAAT DIKLIK */
+.custom-cursor.click {
+    width: 19px;
+    height: 19px;
+}
+
+
+/* =========================================
+   HOME ID CARD 3D
+========================================= */
+
+.home-img {
+    width: 32vw;
+    max-width: 380px;
+    aspect-ratio: 5.4 / 8.6;
+    perspective: 1200px;
+    flex-shrink: 0;
+
+    left: -80px !important;
+}
+
+.home-card {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+/* CARD INNER */
+.home-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+
+    transform:
+        rotateX(var(--rotate-x, 0deg))
+        rotateY(var(--rotate-y, 0deg));
+
+    transition: transform 0.25s ease;
+}
+
+/* KETIKA KARTU DIBALIK */
+.home-card.is-flipped .home-card-inner {
+    transform:
+        rotateX(var(--rotate-x, 0deg))
+        rotateY(calc(180deg + var(--rotate-y, 0deg)));
+}
+
+/* BAGIAN DEPAN DAN BELAKANG */
+.home-card-face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    box-shadow: 0 0 25px var(--main-color);
+    transition: box-shadow 0.3s ease;
+}
+
+.home-card-front {
+    transform: rotateY(0deg);
+}
+
+.home-card-back {
+    transform: rotateY(180deg);
+}
+
+/* GAMBAR */
+.home-card-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    display: block;
+    box-shadow: none;
+}
+
+/* NEON GLOW */
+.home-card.is-hovering .home-card-face {
+    box-shadow:
+        0 0 25px var(--main-color),
+        0 0 45px var(--main-color);
+}
+
+/* LIGHT REFLECTION */
+.home-card-glare {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 30px;
+
+    background: radial-gradient(
+        circle at var(--glare-x, 50%) var(--glare-y, 50%),
+        rgba(255, 255, 255, 0.35),
+        rgba(255, 255, 255, 0.08) 25%,
+        transparent 60%
+    );
+
+    transition: opacity 0.25s ease;
+}
+
+.home-card.is-hovering .home-card-glare {
+    opacity: 1;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+    .home-img {
+        width: 60vw;
+        max-width: 300px;
     }
 }
 
-@media (pointer: fine) {
-
-    body.custom-cursor-enabled,
-    body.custom-cursor-enabled * {
-        cursor: none !important;
-    }
-
-    .custom-cursor,
-    .cursor-dot {
-        position: fixed;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        z-index: 99999;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    /* Lingkaran utama */
-    .custom-cursor {
-        width: 24px;
-        height: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.9);
-
-        box-shadow:
-            0 0 5px rgba(255, 255, 255, 0.5),
-            0 0 12px rgba(255, 255, 255, 0.25);
-
-        transition:
-            width 0.25s ease,
-            height 0.25s ease,
-            background 0.25s ease,
-            box-shadow 0.25s ease;
-    }
-
-    /* Titik tengah */
-    .cursor-dot {
-        width: 7px;
-        height: 7px;
-        background: #f3f3f3;
-
-        box-shadow:
-            0 0 5px #ffffff,
-            0 0 10px rgba(255, 255, 255, 0.8);
-    }
-
-    /* Efek hover */
-    .custom-cursor.hover {
-        width: 34px;
-        height: 34px;
-        background: rgba(255, 255, 255, 0.08);
-
-        box-shadow:
-            0 0 8px rgba(236, 233, 233, 0.7),
-            0 0 18px rgba(255, 255, 255, 0.4);
-    }
-
-    /* Efek klik */
-    .custom-cursor.click {
-        width: 19px;
-        height: 19px;
+@media (max-width: 420px) {
+    .home-img {
+        width: 70vw;
     }
 }

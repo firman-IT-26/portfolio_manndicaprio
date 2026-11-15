@@ -153,7 +153,30 @@ reviewButtons.forEach(button => {
         e.preventDefault();
 
         const title = button.dataset.title;
-        const images = button.dataset.images.split("|");
+
+        let images = [];
+
+        if (button.dataset.folder) {
+
+            const folder = button.dataset.folder;
+            const start = Number(button.dataset.start);
+            const end = Number(button.dataset.end);
+
+            for (let i = start; i <= end; i++) {
+                const extension = button.dataset.extension || ".png";
+                const prefix = button.dataset.prefix || "";
+
+                images.push(`${folder}${prefix}${i}${prefix ? ")" : ""}${extension}`);
+            }
+
+        } else {
+
+            images = (button.dataset.images || "")
+                .split("|")
+                .map(img => img.trim())
+                .filter(img => img !== "");
+
+        }           
 
         modalTitle.textContent = title;
         modalGallery.innerHTML = "";
@@ -420,3 +443,62 @@ function typeEffect() {
 }
 
 typeEffect();
+
+// HOME 3D FLIP CARD
+const homeCard = document.getElementById("homeCard");
+
+if (homeCard) {
+
+    // EFEK TILT DAN LIGHT REFLECTION
+    homeCard.addEventListener("pointermove", (e) => {
+
+        if (e.pointerType === "touch") return;
+
+        const rect = homeCard.getBoundingClientRect();
+
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+
+        // KEMIRINGAN KARTU
+        const rotateX = (0.5 - y) * 12;
+        const rotateY = (x - 0.5) * 12;
+
+        homeCard.style.setProperty(
+            "--rotate-x",
+            `${rotateX}deg`
+        );
+
+        homeCard.style.setProperty(
+            "--rotate-y",
+            `${rotateY}deg`
+        );
+
+        // POSISI PANTULAN CAHAYA
+        homeCard.style.setProperty(
+            "--glare-x",
+            `${x * 100}%`
+        );
+
+        homeCard.style.setProperty(
+            "--glare-y",
+            `${y * 100}%`
+        );
+
+        homeCard.classList.add("is-hovering");
+    });
+
+    // RESET KETIKA MOUSE KELUAR
+    homeCard.addEventListener("pointerleave", () => {
+
+        homeCard.style.setProperty("--rotate-x", "0deg");
+        homeCard.style.setProperty("--rotate-y", "0deg");
+
+        homeCard.classList.remove("is-hovering");
+    });
+
+    // FLIP FOTO
+    homeCard.addEventListener("click", () => {
+        homeCard.classList.toggle("is-flipped");
+    });
+
+}
