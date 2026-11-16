@@ -2504,3 +2504,54 @@ body.modal-open {
         width: 70vw;
     }
 }
+
+/* =========================================
+   PERFORMANCE OPTIMIZATION
+========================================= */
+
+/* 1. Optimasi Liquid Glass */
+.header,
+.gradient-button,
+.btn,
+.services-box,
+.project-card,
+.project-card .btn {
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+/* 2. Optimasi Scroll Reveal */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-zoom {
+    filter: none !important;
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease !important;
+}
+
+/* 3. Kurangi efek shadow saat hover */
+.services-box:hover,
+.project-card:hover {
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* 4. Optimasi Cyber Scan */
+.scan-line {
+    animation-duration: 4s;
+}
+
+/* 5. Optimasi perangkat dengan
+   pengaturan reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
