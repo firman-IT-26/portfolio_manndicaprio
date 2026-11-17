@@ -480,4 +480,25 @@ techText.addEventListener("mouseenter", () => {
     }, 30);
 });
 
-requestAnimationFrame(animateCursor);
+// navbar //
+/* =====================================
+   FLOATING PILL NAVBAR
+===================================== */
+
+const header = document.querySelector('.header');
+const logo = document.querySelector('.logo');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled', 'expanded');
+    }
+});
+
+logo.addEventListener('click', (e) => {
+    if (header.classList.contains('scrolled')) {
+        e.preventDefault();
+        header.classList.toggle('expanded');
+    }
+});
