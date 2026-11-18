@@ -2568,3 +2568,72 @@ body.modal-open {
         scroll-behavior: auto !important;
     }
 }
+
+/* =========================================
+   FIX HAMBURGER NAVBAR (MOBILE & TABLET)
+========================================= */
+@media (max-width: 991px) {
+
+    /* Header jadi selebar layar, logo kiri & hamburger kanan */
+    .header,
+    .header.scrolled,
+    .header.scrolled.expanded {
+        width: 92%;
+        max-width: none;
+        top: 12px;
+        padding: 1.4rem 2.5rem;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    /* Tombol hamburger */
+    #menu-icon {
+        display: block;
+        font-size: 3.5rem;
+        color: var(--main-color);
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    /* Navbar: tersembunyi dulu, apapun kondisi scroll-nya */
+    .header .navbar,
+    .header.scrolled:not(.expanded) .navbar,
+    .header.scrolled.expanded .navbar {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1rem);
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 1.5rem 2rem;
+
+        background: rgba(10, 10, 14, 0.97); /* solid, bukan blur */
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 2.5rem;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+
+        opacity: 1;
+        overflow: visible;
+        white-space: normal;
+        pointer-events: auto;
+        text-align: center;
+    }
+
+    /* Navbar tampil saat hamburger diklik */
+    .header .navbar.active,
+    .header.scrolled:not(.expanded) .navbar.active,
+    .header.scrolled.expanded .navbar.active {
+        display: flex;
+    }
+
+    .header .navbar a {
+        display: block;
+        margin: 0;
+        padding: 1.4rem 1rem;
+        font-size: 2rem;
+        border-radius: 1.5rem;
+    }
+}
