@@ -16,7 +16,7 @@
     --background-color: #000000;
     --second-background-color: #0a0a0a;
     --text-color: #fdfdfd;
-    --main-color: #ffffff;
+    --main-color: #7809f7;
 }
 
 html{
@@ -99,7 +99,7 @@ body::-webkit-scrollbar {
     background: linear-gradient(
         90deg,
         #f7f5f5,
-        #646464,
+        #7809f7,
         #f7f7f7
     );
     background-size: 200%;
@@ -118,7 +118,7 @@ body::-webkit-scrollbar {
 span {
     background: linear-gradient(
         270deg,
-        #f3f3f3 10%,
+        #7809f7 10%,
         #696868 100%
     );
     -webkit-background-clip: text;
@@ -355,7 +355,7 @@ section{
     object-fit:cover;
     z-index: -1;
     background: black;
-    filter: blur(0px) brightness(0.80);
+    filter: blur(0px) brightness(0.30);
     transform: scale(1.1);
 }
 
@@ -2178,7 +2178,7 @@ body.modal-open {
     font-size: clamp(4rem, 9vw, 11rem);
     font-weight: 900;
     letter-spacing: 8px;
-    color: #fff;
+    color: #7809f7;
     line-height: 1.1;
     opacity: 0;
     transform: translateY(40px);
@@ -2189,7 +2189,7 @@ body.modal-open {
 .intro-title span {
     background: linear-gradient(
         180deg,
-        #ffffff,
+        #7809f7,
         #777777
     );
     -webkit-background-clip: text;
@@ -2212,7 +2212,7 @@ body.modal-open {
 
 /* SUBTITLE */
 .intro-subtitle {
-    color: #aaa;
+    color: #7809f7;
     font-size: 1.3rem;
     letter-spacing: 5px;
     opacity: 0;
@@ -2220,7 +2220,7 @@ body.modal-open {
 }
 
 .intro-subtitle span {
-    color: #fff;
+    color: #7809f7;
     margin: 0 8px;
 }
 
@@ -2249,8 +2249,8 @@ body.modal-open {
 }
 
 .intro-button:hover {
-    background: #fff;
-    color: #000;
+    background: #7809f7;
+    color: #ffffff;
     border-color: #fff;
     box-shadow: 0 0 30px rgba(255,255,255,0.2);
     transform: translateY(-4px);
@@ -2636,4 +2636,43 @@ body.modal-open {
         font-size: 2rem;
         border-radius: 1.5rem;
     }
+}
+
+/* CONTACT INFO */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.contact-info a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2.4rem;
+    font-size: 1.6rem;
+    color: #ffffff;
+    border-radius: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    transition: all 0.3s ease;
+}
+
+.contact-info a i {
+    font-size: 2.2rem;
+}
+
+.contact-info a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+#formStatus {
+    font-size: 1.5rem;
+    color: #cfd4dc;
+    min-height: 2rem;
 }

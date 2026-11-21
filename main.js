@@ -502,3 +502,35 @@ logo.addEventListener('click', (e) => {
         header.classList.toggle('expanded');
     }
 });
+
+/* =========================================
+   CONTACT FORM (FORMSPREE)
+========================================= */
+
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        formStatus.textContent = "Sending...";
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: "POST",
+                body: new FormData(contactForm),
+                headers: { Accept: "application/json" }
+            });
+
+            if (response.ok) {
+                formStatus.textContent = "Message sent! Thank you, I'll reply soon.";
+                contactForm.reset();
+            } else {
+                formStatus.textContent = "Oops, something went wrong. Please try again.";
+            }
+        } catch (error) {
+            formStatus.textContent = "Network error. Please try again.";
+        }
+    });
+}
