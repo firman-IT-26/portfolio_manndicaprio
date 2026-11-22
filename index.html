@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="assets/image/favicon.jpg">
-    <title>Firmnsyh</title>
+    <title>Firmansyah Firdaus | Graphic Designer.</title>
     <link rel="stylesheet" href="style.css">    
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <meta name="description" content="Portfolio Firmansyah Firdaus, graphic designer: logo, poster, dan jersey.">
+    <meta property="og:title" content="Firmansyah Firdaus | Graphic Designer">
+    <meta property="og:description" content="Lihat karya logo, poster, dan jersey saya.">
+    <meta property="og:image" content="https://firman-it-26.github.io/portfolio_manndicaprio/assets/image/project%201.jpg">
 </head>
 <body>
 
@@ -42,13 +45,13 @@
 
         <div class="intro-footer">
             <span>EST. 2026</span>
-            <span>DESIGNED BY MANN DICAPRIO</span>
+            <span>DESIGNED BY FIRMANSYAH</span>
         </div>
 
     </div>
     <!-- END CINEMATIC INTRO -->
 
-    <img src="assets/image/glow.jpg" class="bg-video" alt="Background">
+    <img src="assets/image/BACKGROUND/red background.jpg" class="bg-video" alt="Background">
 
     <header class="header">
 
@@ -63,12 +66,48 @@
         <nav class="navbar">
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#skills">Skills</a>
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-
     </header>
+
+    <!-- MOBILE FLOATING NAVBAR -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+
+    <a href="#home" class="mobile-nav-link active" aria-label="Home">
+        <i class="bx bx-home-alt-2"></i>
+        Home
+    </a>
+
+    <a href="#about" class="mobile-nav-link" aria-label="About">
+        <i class="bx bx-user"></i>
+        About
+    </a>
+
+    <a href="#skills" class="mobile-nav-link" aria-label="Skills">
+        <i class="bx bx-code-alt"></i>
+        Skills
+    </a>
+
+    <a href="#services" class="mobile-nav-link" aria-label="Services">
+        <i class="bx bx-layer"></i>
+        Services
+    </a>
+
+    <a href="#projects" class="mobile-nav-link" aria-label="Projects">
+        <i class="bx bx-briefcase-alt-2"></i>
+        Projects
+    </a>
+
+    <a href="#contact" class="mobile-nav-link" aria-label="Contact">
+        <i class="bx bx-message-rounded-dots"></i>
+        Contact
+    </a>
+
+</nav>
+<!-- END MOBILE FLOATING NAVBAR -->
     
     <section class="home" id="home">
         <div class="home-content">
@@ -132,7 +171,7 @@
                     <div class="card-glare"></div>
                     <div class="cyber-lines"><span></span><span></span><span></span><span></span></div>
                     <p id="prompt">HOVER ME</p>
-                    <div class="title">MannDicaprio</div>
+                    <div class="title">Firmansyh</div>
                     <div class="subtitle"><span>GRAPHIC</span><span class="highlight">DESIGNER</span></div>
                     <div class="corner-elements"><span></span><span></span><span></span><span></span></div>
                     <div class="scan-line"></div>
@@ -145,28 +184,68 @@
     <div class="about-content">
         <h2>About <span>Me</span></h2>
         <p>My name is Firmansyah Firdaus, I’m 18 years old, and I have skills in graphic design. I enjoy creating visual content and using design software like Photoshop, Illustrator and CorelDraw. I’m creative, eager to learn, and passionate about improving my skills in a professional environment.</p>
-        <!-- KOTAK SOFTWARE SEKARANG SUDAH DI DALAM (DI BAWAH PARAGRAF) -->
-        <div class="software-section">
-            <h2>Software</h2>
-            <div class="software-icons">
-                <!-- 1. Photoshop (Ps) -->
-                <div class="app-card ps" title="Adobe Photoshop">
-                    <span>Ps</span>
-                </div>
-                <!-- 2. Illustrator (Ai) -->
-                <div class="app-card ai" title="Adobe Illustrator">
-                    <span>Ai</span>
-                </div>
-                <!-- 3. Vector / Pencil Hijau -->
-                <div class="app-card pencil" title="Illustration & Drawing">
-                    <i class='bx bxs-pencil'></i>
-                </div>
-            </div>
-        </div>
         <!-- TOMBOL BERADA DI BAWAH SOFTWARE -->
         <a href="#" class="btn">Read More</a>
     </div>
     <!-- ==================================================================================== -->
+    </section>
+
+<!-- INI BAGIAN SKILLS -->
+    <section class="skills" id="skills">
+        <h2 class="heading">Skills</h2>
+        <p class="skills-intro">The software I use to turn ideas into finished designs.</p>
+
+        <div class="skills-container">
+
+            <!-- Photoshop -->
+            <div class="skill-card" data-level="85">
+                <div class="skill-icon ps">Ps</div>
+                <h4>Photoshop</h4>
+                <p class="skill-desc">Posters, social media banners, and photo manipulation.</p>
+                <div class="skill-meta">
+                    <div>Level</div>
+                    <div class="skill-label"></div>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="--level: 85%"></div></div>
+            </div>
+
+            <!-- Illustrator -->
+            <div class="skill-card" data-level="75">
+                <div class="skill-icon ai">Ai</div>
+                <h4>Illustrator</h4>
+                <p class="skill-desc">Logos, brand identity, and vector illustration.</p>
+                <div class="skill-meta">
+                    <div>Level</div>
+                    <div class="skill-label"></div>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="--level: 80%"></div></div>
+            </div>
+
+            <!-- CorelDraw -->
+            <div class="skill-card" data-level="50">
+                <div class="skill-icon cd">Cd</div>
+                <h4>CorelDraw</h4>
+                <p class="skill-desc">Jersey layouts and print-ready vector files.</p>
+                <div class="skill-meta">
+                    <div>Level</div>
+                    <div class="skill-label"></div>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="--level: 65%"></div></div>
+            </div>
+
+            <!-- Power Point -->
+            <div class="skill-card" data-level="50">
+                <div class="skill-icon ppt">P</div>
+                <h4>PowerPoint</h4>
+                <p class="skill-desc">Clean, easy-to-read presentation slides for school, events, and business pitches.</p>
+                <div class="skill-meta">
+                    <div>Level</div>
+                    <div class="skill-label"></div>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="--level: 65%"></div></div>
+            </div>
+
+        </div>
     </section>
 
 <!-- INI BAGIAN SERVICES -->
@@ -178,10 +257,7 @@
                 <div class="services-info">
                     <i class='bx bxs-pen'></i>
                     <h4>LOGO BRANDING</h4>
-                    <P>"Specializing in creating timeless visual identities, iconic logos, and cohesive 
-brand guidelines tailored to tell your company story, strengthen market recognition, 
-and build authentic customer loyalty through purposeful typography, strategic color 
-palettes, memorable symbols, and professional creative design execution standards."</P>
+                    <P>design simple, memorable logos that fit your brand. You get the final files ready to use for print and social media.</P>
                 </div>
             </div>
 
@@ -189,10 +265,7 @@ palettes, memorable symbols, and professional creative design execution standard
                 <div class="services-info">
                     <i class='bx bxs-crop'></i>
                     <h4>POSTER DESIGN</h4>
-                    <P>"Delivering high impact visual posters, creative flyers, and striking digital banners 
-engineered to broadcast your core message, capture immediate public attention, and drive 
-engaging audience responses through dynamic typography, balanced graphic hierarchy, vibrant 
-color contrast, and compelling artistic composition techniques."</P>
+                    <P>Posters, flyers, and social media banners with a clear message and a strong look. Great for events, promos, and announcements.</P>
                 </div>
             </div>
 
@@ -200,10 +273,7 @@ color contrast, and compelling artistic composition techniques."</P>
                 <div class="services-info">
                     <i class='bx bxs-t-shirt'></i>
                     <h4>JERSEY DESIGN</h4>
-                    <P>"Producing modern custom jersey artwork, athletic apparel, and dynamic sportswear patterns 
-engineered to elevate team identity, inspire player confidence, and deliver standout tournament 
-presence through precise sublimation templates, sharp vector illustrations, bold color palettes, 
-and premium print ready manufacturing standards."</P>
+                    <P>Custom jersey designs for teams, communities, and events. Files are prepared for printing, with your colors, names, and numbers.</P>
                 </div>
             </div>
         </div>
@@ -213,162 +283,74 @@ and premium print ready manufacturing standards."</P>
     <section class="project" id="projects">
 
         <div class="section-overlay"></div>
-        <!-- ============================ -->
 
         <h2 class="heading">Projects</h2>
-    <div class="project-box">
-        <!-- Project 1 -->
-        <div class="project-card">
-            <img src="assets/image/project 2.png" alt="Project 1">
-            <h3>Portfolio 2026</h3>
-            <p>A personal portfolio website showcasing my creative journey, design skills, and selected projects. Designed with a modern and minimalist approach to present my work, creativity, and professional identity.</p>
-            <a href="#" class="btn review-project"
-                data-title="Portfolio 2026"
-                data-folder="assets/image/Portfolio 2026/"
-                data-start="2"
-                data-end="21"
-                data-extension=".png">
-               Review Project
-            </a>
-        </div>
-        <!-- Project 2 -->
-        <div class="project-card">
-            <img src="assets/image/project 1.jpg" alt="Project 2">
-            <h3>Logo Beyond binary</h3>
-            <p>A visual identity project representing innovation, creativity, and limitless possibilities in the world of Information Technology. The concept combines binary elements with modern design to symbolize growth beyond coding and technology.</p>
-            <a href="#" class="btn review-project"
-               data-title="Beyond Binary"
-               data-folder="assets/image/Beyond Binary logo/"
-               data-prefix="1 ("
-               data-start="1"
-               data-end="14"
-               data-extension=".jpg">
-               Review Project
-            </a>
-        </div>
-        <!-- Project 3 -->
-        <div class="project-card">
-            <img src="assets/image/BACKGROUND JERSEY.jpg" alt="Project 3">
-            <h3>Jersey design</h3>
-            <p>A collection of custom sports jersey designs featuring unique patterns, dynamic compositions, and modern color combinations. Each design is created to deliver a strong visual identity while maintaining comfort and a professional athletic appearance.</p>
-            <a href="#" class="btn review-project"
-               data-title="Jersey design"
-               data-folder="assets/image/Jersey/"
-               data-prefix="1 ("
-               data-start="2"
-               data-end="60"
-               data-extension=".png">
-               Review Project
-            </a>
-        </div>
-        <!-- Project 4 -->
-        <div class="project-card">
-            <img src="assets/image/ALVEX.jpg" alt="Project 4">
-            <h3>ALVEX LOGO</h3>
-            <p>A logo branding project focused on creating a distinctive and memorable visual identity. Combining creative concepts, modern typography, and meaningful visual elements to establish a strong and recognizable brand character.</p>
-            <a href="#" class="btn review-project"
-                data-title="ALVEX LOGO"
-                data-folder="assets/image/ALVEX Logo/"
-                data-prefix="1 ("
-                data-start="1"
-                data-end="5"
-                data-extension=".png">
-               Review Project
-            </a>
-        </div>
-        <!-- Project 5 -->
-        <div class="project-card">
-            <img src="assets/image/POSTER-DESIGN.jpg" alt="Project 5">
-            <h3>Poster Design</h3>
-            <p>A collection of creative poster designs exploring visual communication through typography, composition, colors, and imagery. Each poster is designed to deliver clear messages while creating an attractive and impactful visual experience.</p>
-            <a href="#" class="btn review-project"
-               data-title="Poster Design"
-               data-folder="assets/image/POSTER DESIGN/"
-               data-prefix="1 ("
-               data-start="1"
-               data-end="28"
-               data-extension=".jpg">
-               Review Project
-            </a>
-        </div>
-        <!-- Project 6 -->
-        <div class="project-card">
-            <img src="assets/image/LOGO-01TPLP013.jpg" alt="Project 6">
-            <h3>01TPLP013</h3>
-            <p>A logo design project developed to create a unique and meaningful visual identity. The design focuses on simplicity, creativity, and visual consistency to represent the character and identity of the project.</p>
-            <a href="#" class="btn review-project"
-               data-title="01TPLP013 LOGO"
-               data-folder="assets/image/01TPLP013/"
-               data-prefix="1 ("
-               data-start="1"
-               data-end="13"
-               data-extension=".png">
-               Review Project
-            </a>
-            </div>
 
-            <!-- Project 7 -->
-        <div class="project-card">
-            <img src="assets/image/SPORT-POSTER.jpg" alt="Project 7">
-            <h3>SPORT POSTER</h3>
-            <p>A sports poster design collection inspired by athletic energy, competition, and dynamic movements. Using bold typography, striking compositions, and powerful visual elements to create engaging and impactful sports visuals.</p>
-            <a href="#" class="btn review-project"
-               data-title="SPORT POSTER"
-               data-folder="assets/image/SPORT POSTER/"
-               data-prefix="1 ("
-               data-start="1"
-               data-end="16"
-               data-extension=".jpg">
-               Review Project
-            </a>
-        </div>
+        <div class="project-box">
 
             <!-- Project 8 -->
-        <div class="project-card">
-            <img src="assets/image/Experimental Editorial Design-BACKGROUND.jpg" alt="Project 8">
-            <h3>Experimental Editorial Design</h3>
-            <p>An experimental editorial design project exploring creative layouts, typography, visual hierarchy, and artistic compositions. This project combines innovative design approaches to create engaging and expressive visual storytelling.</p>
-            <a href="#" class="btn review-project"
-               data-title="Experimental Editorial Design"
-               data-folder="assets/image/Experimental Editorial Design/"
-               data-prefix="ED ("
-               data-start="1"
-               data-end="23"
-               data-extension=".jpg">
-               Review Project
-            </a>
+            <div class="project-card"
+                data-folder="assets/image/Experimental Editorial Design/"
+                data-prefix="ED ("
+                data-start="1"
+                data-end="23"
+                data-price="Rp 500.000"
+                data-extension=".jpg">
+                <img src="assets/image/BACKGROUND/Experimental Editorial Design-BACKGROUND.jpg" alt="Experimental Editorial Design">
+                <h3>Experimental Editorial Design</h3>
+                <p>An experimental editorial design project exploring creative layouts, typography, visual hierarchy, and artistic compositions. This project combines innovative design approaches to create engaging and expressive visual storytelling.</p>
+                <div class="project-meta">
+                    <div class="meta-box">
+                        <div class="meta-label">Year</div>
+                        <div class="meta-value">50000</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card"
+                data-folder="assets/image/Beyond Binary logo/" 
+                data-prefix="1 ("
+                data-start="1"
+                data-end="14"
+                data-extension=".jpg">
+                <img src="assets/image/BACKGROUND/project 1.jpg" alt="Experimental Editorial Design">
+                <h3>Experimental Editorial Design</h3>
+                <p>An experimental editorial design project exploring creative layouts, typography, visual hierarchy, and artistic compositions. This project combines innovative design approaches to create engaging and expressive visual storytelling.</p>
+                <div class="project-meta">
+                    <div class="meta-box">
+                        <div class="meta-label">Year</div>
+                        <div class="meta-value">50000</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </section>
 
-        
-
-        <!-- POPUP REVIEW PROJECT -->
+    <!-- POPUP DETAIL PROJECT (di luar section supaya selalu di atas header) -->
     <div class="project-modal" id="projectModal">
-
         <div class="modal-content">
-
             <button class="modal-close" id="modalClose">&times;</button>
 
-            <h2 id="modalTitle">Project Preview</h2>
+            <div class="modal-main">
+                <img id="modalMainImg" src="" alt="Preview project">
+            </div>
 
-            <div class="modal-gallery" id="modalGallery"></div>
+            <div class="modal-thumbs" id="modalThumbs"></div>
 
+            <h2 class="detail-title" id="modalTitle"></h2>
+            <p class="detail-desc" id="modalDesc"></p>
+            <div class="project-meta" id="modalMeta"></div>
         </div>
-
     </div>
 
-    <!-- POPUP GAMBAR BESAR -->
+    <!-- POPUP FOTO BESAR -->
     <div class="image-lightbox" id="imageLightbox">
-
         <button class="lightbox-close" id="lightboxClose">&times;</button>
-
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Foto sebelumnya"><i class='bx bx-chevron-left'></i></button>
+<button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Foto berikutnya"><i class='bx bx-chevron-right'></i></button>
         <img src="" id="lightboxImage" alt="Preview Project">
-
     </div>
-
-</div>
-
-    </section>
 
     <!-- INI BAGIAN CONTACT -->
     <section class="contact" id="contact">
@@ -384,7 +366,7 @@ and premium print ready manufacturing standards."</P>
             </a>
         </div>
 
-        <form action="https://formspree.io/f/abcdwxyz" method="POST" id="contactForm">
+        <form action="https://formspree.io/f/maeodoyd" method="POST">
 
             <div class="input-group">
                 <div class="input-box">
@@ -416,7 +398,7 @@ and premium print ready manufacturing standards."</P>
 
             <ul class="list">
                 <li>
-                    <a href="FAQ"></a>
+                    <a href="#home">Home</a>
                 </li>
 
                 <li>
@@ -437,7 +419,7 @@ and premium print ready manufacturing standards."</P>
             </ul>
 
             <p class="copyright">
-                @ Manndicaprio | All Rights Reserved
+                2026 Firmansyah Firdaus | All Rights Reserved
             </p>
     </footer>
 

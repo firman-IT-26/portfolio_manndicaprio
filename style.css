@@ -16,7 +16,7 @@
     --background-color: #000000;
     --second-background-color: #0a0a0a;
     --text-color: #fdfdfd;
-    --main-color: #7809f7;
+    --main-color: #ef4444;
 }
 
 html{
@@ -99,7 +99,7 @@ body::-webkit-scrollbar {
     background: linear-gradient(
         90deg,
         #f7f5f5,
-        #7809f7,
+        #ef4444,
         #f7f7f7
     );
     background-size: 200%;
@@ -118,8 +118,8 @@ body::-webkit-scrollbar {
 span {
     background: linear-gradient(
         270deg,
-        #7809f7 10%,
-        #696868 100%
+        #ef4444 10%,
+        #f0eeee 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -354,8 +354,8 @@ section{
     height:100%;
     object-fit:cover;
     z-index: -1;
-    background: black;
-    filter: blur(0px) brightness(0.30);
+    background: rgb(66, 62, 62);
+    filter: blur(0px) brightness(0.60);
     transform: scale(1.1);
 }
 
@@ -687,117 +687,138 @@ section{
 }
 
 /* =========================================
-   BAGIAN SOFTWARE & 3 ICON APLIKASI
+   SECTION SKILLS
 ========================================= */
-.software-section {
-  margin: 2.5rem 0 3rem;
-}
-/* Judul Heading 2 Software */
-.software-section h2 {
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-align: left;
-}
-/* Wadah 3 Icon Berjejer Menyamping */
-.software-icons {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-/* Desain Dasar Card Icon Aplikasi */
-.app-card {
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  user-select: none;
-}
-/* 1. Icon Photoshop (Ps) */
-.app-card.ps {
-  background: #001e36;
-  border: 2px solid #31a8ff;
-}
-.app-card.ps span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff; /* Tulisan Ps Berwarna Putih */
-  letter-spacing: -1px;
-}
-/* 2. Icon Illustrator (Ai) */
-.app-card.ai {
-  background: #330000;
-  border: 2px solid #ff9a00;
-}
-.app-card.ai span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff; /* Tulisan Ai Berwarna Putih */
-  letter-spacing: -1px;
-}
-/* 3. Icon Pencil Hijau */
-.app-card.pencil {
-  background: linear-gradient(135deg, #10b981, #059669);
-  border: 2px solid #34d399;
-}
-.app-card.pencil i {
-  font-size: 2.8rem;
-  color: #ffffff;
-  transform: rotate(-45deg); /* Posisi pensil miring estetik */
-}
-/* EFEK HOVER (Mengangkat & Memancarkan Cahaya Neon Masing-Masing Aplikasi) */
-.app-card:hover {
-  transform: translateY(-8px) scale(1.12);
-}
-.app-card.ps:hover {
-  box-shadow: 0 10px 25px rgba(49, 168, 255, 0.6);
-}
-.app-card.ai:hover {
-  box-shadow: 0 10px 25px rgba(255, 154, 0, 0.6);
-}
-.app-card.pencil:hover {
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.6);
-}
-/* Penyesuaian Saat Dibuka di HP */
-@media (max-width: 900px) {
-  .software-section h2 {
-    text-align: center;
-  }
-  .software-icons {
-    justify-content: center;
-  }
+
+.skills {
+    min-height: auto;
+    padding: 6rem 9% 7rem;
+    position: relative;
+    background: transparent !important;
 }
 
-/* Reset Tulisan Ps agar Putih Solid Murni */
-.app-card.ps span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  letter-spacing: -1px;
+.skills-intro {
+    max-width: 560px;
+    margin: -1.5rem auto 4rem;
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #cfd4dc;
 }
-/* Reset Tulisan Ai agar Putih Solid Murni */
-.app-card.ai span {
-  font-family: Arial, sans-serif;
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important; /* Menghilangkan efek gradasi */
-  background: none !important;
-  -webkit-background-clip: border-box !important;
-  letter-spacing: -1px;
+
+/* Kolom menyesuaikan lebar layar otomatis */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
 }
+
+/* Kartu kaca */
+.skill-card {
+    padding: 3rem 2.4rem;
+    border-radius: 2.5rem;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px var(--main-color);
+}
+
+/* Ikon software */
+.skill-icon {
+    width: 8rem;
+    height: 8rem;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    font-family: Arial, sans-serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.skill-icon.ps { background: #001e36; border: 2px solid #31a8ff; }
+.skill-icon.ai { background: #330000; border: 2px solid #ff9a00; }
+.skill-icon.cd { background: #0b2a1c; border: 2px solid #34d399; }
+.skill-icon.ppt { background: #ff3503; border: 2px solid #f57c04; }
+
+.skill-card h4 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.skill-desc {
+    min-height: 5.4rem;
+    margin-bottom: 2.2rem;
+    font-size: 1.45rem;
+    line-height: 1.6;
+    color: #cfd4dc;
+}
+
+/* Label level */
+.skill-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8f96a3;
+}
+
+.skill-meta div:last-child {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Bar level */
+.skill-bar {
+    height: 8px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.skill-fill {
+    width: 0;
+    height: 100%;
+    border-radius: 10px;
+    background: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Bar terisi saat section terlihat */
+.skills.in-view .skill-fill {
+    width: var(--level);
+}
+
+.skills.in-view .skill-card:nth-child(2) .skill-fill { transition-delay: 0.15s; }
+.skills.in-view .skill-card:nth-child(3) .skill-fill { transition-delay: 0.3s; }
 
 /* ========================================================
    BACKGROUND VIDEO KHUSUS SECTION ABOUT
@@ -1724,37 +1745,14 @@ html, body {
     50% { box-shadow: 0 0 25px var(--main-color, #e25816); }
 }
 
-/* BACKGROUND MENYATU: SERVICES, PROJECTS, CONTACT */
-.services-project-contact {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-}
-
-.services-project-contact .group-bg-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-    pointer-events: none;
-}
-
-.services-project-contact .group-bg-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 10, 15, 0.45);
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* Semua section dibuat transparan */
-.services-project-contact .services,
-.services-project-contact .project,
-.services-project-contact .contact {
-    background: transparent !important;
-    background-color: transparent !important;
+/* ===== MUSIC BUTTON MOBILE ===== */
+@media (max-width: 768px) {
+    .music-btn {
+        top: 20px;
+        right: 20px;
+        bottom: auto;
+        left: auto;
+    }
 }
 
 /* =========================================
@@ -2178,7 +2176,7 @@ body.modal-open {
     font-size: clamp(4rem, 9vw, 11rem);
     font-weight: 900;
     letter-spacing: 8px;
-    color: #7809f7;
+    color: var(--main-color);
     line-height: 1.1;
     opacity: 0;
     transform: translateY(40px);
@@ -2212,7 +2210,7 @@ body.modal-open {
 
 /* SUBTITLE */
 .intro-subtitle {
-    color: #7809f7;
+    color: var(--main-color);
     font-size: 1.3rem;
     letter-spacing: 5px;
     opacity: 0;
@@ -2220,7 +2218,7 @@ body.modal-open {
 }
 
 .intro-subtitle span {
-    color: #7809f7;
+    color: var(--main-color);
     margin: 0 8px;
 }
 
@@ -2249,8 +2247,8 @@ body.modal-open {
 }
 
 .intro-button:hover {
-    background: #7809f7;
-    color: #ffffff;
+    background: var(--main-color);
+    color: #050505;
     border-color: #fff;
     box-shadow: 0 0 30px rgba(255,255,255,0.2);
     transform: translateY(-4px);
@@ -2675,4 +2673,478 @@ body.modal-open {
     font-size: 1.5rem;
     color: #cfd4dc;
     min-height: 2rem;
+}
+
+/* PROJECT MODAL INFO */
+.modal-desc {
+    max-width: 800px;
+    margin: -1.5rem auto 2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #cfd4dc;
+}
+
+.modal-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.meta-item {
+    padding: 1.4rem 1.6rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.meta-label {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8f96a3;
+    margin-bottom: 0.6rem;
+}
+
+.meta-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .modal-meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================
+   PROJECT: KARTU + MODAL DETAIL (FINAL)
+========================================= */
+
+/* ---------- KARTU PROJECT ---------- */
+
+/* Kartu dan fotonya bisa diklik */
+.project-card,
+.project-card img {
+    cursor: pointer;
+}
+
+/* Tulisan kecil "N foto" */
+.card-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+    font-size: 1.25rem;
+    color: #8f96a3;
+}
+
+.card-hint i {
+    font-size: 1.8rem;
+}
+
+/* Kotak Year (hanya satu kotak) */
+.project-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-top: auto;
+}
+
+.meta-box {
+    padding: 1rem 1.2rem;
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: left;
+}
+
+.meta-box .meta-label {
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8f96a3;
+    margin-bottom: 0.4rem;
+}
+
+.meta-box .meta-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* ---------- MODAL DETAIL ---------- */
+
+/* Foto utama */
+.modal-main {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 1.8rem;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.modal-main img {
+    max-width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+    border-radius: 1.2rem;
+    cursor: zoom-in;
+}
+
+/* Deretan foto kecil */
+.modal-thumbs {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1.4rem 0.2rem;
+}
+
+.modal-thumbs img {
+    width: 150px;
+    height: 110px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 2px solid transparent;
+    opacity: 0.55;
+    cursor: zoom-in;
+    transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.modal-thumbs img:hover {
+    opacity: 0.85;
+}
+
+.modal-thumbs img.active {
+    opacity: 1;
+    border-color: #ffffff;
+}
+
+/* Judul, deskripsi, dan Year di modal */
+.modal-content .detail-title {
+    font-size: 3rem;
+    text-align: left;
+    margin: 1rem 0;
+}
+
+.detail-desc {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #cfd4dc;
+    margin-bottom: 2rem;
+}
+
+.modal-content .project-meta {
+    max-width: 200px;
+}
+
+/* YEAR + PRICE BERDAMPINGAN DI JENDELA DETAIL */
+.modal-content .project-meta {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 440px;
+}
+
+/* ---------- PANAH LIGHTBOX ---------- */
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 3001;
+    transition: background 0.3s ease;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-prev { left: 3rem; }
+.lightbox-next { right: 3rem; }
+
+/* ---------- HP ---------- */
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 3rem 2rem;
+    }
+
+    .modal-thumbs img {
+        width: 110px;
+        height: 85px;
+    }
+
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+}
+
+/* =========================================
+   FIX FOTO PORTRAIT & LANDSCAPE
+========================================= */
+
+/* Kotak foto utama: tinggi tetap, foto selalu utuh */
+.modal-main {
+    height: 55vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-main img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+}
+
+/* Foto kecil: tinggi sama, lebar mengikuti bentuk foto */
+.modal-thumbs {
+    align-items: center;
+}
+
+.modal-thumbs img {
+    height: 110px;
+    width: auto;
+    min-width: 70px;
+    max-width: 200px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* HP */
+@media (max-width: 768px) {
+    .modal-main {
+        height: 45vh;
+    }
+
+    .modal-thumbs img {
+        height: 85px;
+        width: auto;
+        min-width: 55px;
+        max-width: 150px;
+    }
+}
+
+
+/* =========================================
+   SCROLLBAR FOTO KECIL (ESTETIK)
+========================================= */
+
+.modal-thumbs {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--main-color) rgba(255, 255, 255, 0.06);
+    padding-bottom: 1.8rem;
+}
+
+/* Chrome, Edge, Safari */
+.modal-thumbs::-webkit-scrollbar {
+    height: 6px;
+}
+
+/* Jalur */
+.modal-thumbs::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+/* Batang yang digeser */
+.modal-thumbs::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #7809f7, #b57bff);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.modal-thumbs::-webkit-scrollbar-thumb:hover {
+    background: var(--main-color);
+    box-shadow: 0 0 14px var(--main-color);
+}
+
+/* Hilangkan tombol panah kecil di ujung scrollbar */
+.modal-thumbs::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* UKURAN KARTU HOME */
+.home-img {
+    max-width: 320px;
+}
+
+@media (max-width: 991px) {
+    .home-img {
+        width: 55vw;
+        max-width: 240px;
+    }
+}
+
+/* =========================================
+   MOBILE FLOATING GLASS NAVBAR
+========================================= */
+
+/* Sembunyikan navbar baru di desktop */
+.mobile-bottom-nav {
+    display: none;
+}
+
+/* Khusus tampilan HP */
+@media (max-width: 768px) {
+
+    /* Sembunyikan seluruh header lama */
+    .header {
+        display: none !important;
+    }
+
+    #menu-icon {
+        display: none !important;
+    }
+
+    /* Container navbar */
+    .mobile-bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: max(4rem, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        z-index: 1200;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.25rem;
+
+        width: min(94%, 560px);
+        padding: 0.8rem 0.65rem;
+
+        border: 1px solid rgba(255, 255, 255, 0.514);
+        border-radius: 5rem;
+
+        background: linear-gradient(
+            135deg,
+            rgba(245, 243, 243, 0.16),
+            rgba(255,255,255,0.055)
+        );
+
+        backdrop-filter: blur(22px) saturate(160%);
+        -webkit-backdrop-filter: blur(22px) saturate(160%);
+
+        box-shadow:
+            0 12px 35px rgba(0,0,0,0.42),
+            inset 0 1px 1px rgba(255,255,255,0.22),
+            inset 0 -1px 1px rgba(0,0,0,0.2);
+    }
+
+    /* Link navbar */
+    .mobile-bottom-nav .mobile-nav-link {
+        position: relative;
+
+        display: flex;
+        flex: 1 1 0;
+        min-width: 0;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+
+        padding: 0.7rem 0.15rem;
+        border-radius: 5rem;
+
+        color: rgba(255,255,255,0.72);
+        font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+        font-weight: 500;
+
+        text-decoration: none;
+        white-space: nowrap;
+
+        transition:
+            color 0.25s ease,
+            background 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    /* Icon */
+    .mobile-bottom-nav .mobile-nav-link i {
+        display: block;
+        font-size: 2.35rem;
+        line-height: 1;
+        color: currentColor;
+
+        transition: transform 0.25s ease;
+    }
+
+    /* Menu aktif */
+    .mobile-bottom-nav .mobile-nav-link.active {
+        color: var(--main-color);
+        background: rgba(149,224,216,0.13);
+
+        text-shadow: 0 0 12px rgba(149,224,216,0.3);
+    }
+
+    .mobile-bottom-nav .mobile-nav-link.active i {
+        transform: translateY(-1px) scale(1.08);
+    }
+
+    /* Efek ketika ditekan */
+    .mobile-bottom-nav .mobile-nav-link:active {
+        transform: scale(0.94);
+    }
+
+    /* Ruang tambahan di bawah footer */
+    .footer {
+        padding-bottom: calc(12rem + env(safe-area-inset-bottom));
+    }
+}
+
+/* HP dengan layar sangat kecil */
+@media (max-width: 360px) {
+
+    .mobile-bottom-nav {
+        width: 96%;
+        padding: 0.7rem 0.45rem;
+        gap: 0.1rem;
+    }
+
+    .mobile-bottom-nav .mobile-nav-link {
+        font-size: 0.9rem;
+        padding-left: 0.05rem;
+        padding-right: 0.05rem;
+    }
+
+    .mobile-bottom-nav .mobile-nav-link i {
+        font-size: 2.15rem;
+    }
+}
+
+/* =========================================
+   MOBILE LOGO — CENTER POSITION
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Tampilkan logo di tengah layar */
+    .header .logo {
+        display: block !important;
+        position: fixed;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1100;
+
+        font-size: 2.5rem;
+        white-space: nowrap;
+    }
+
 }

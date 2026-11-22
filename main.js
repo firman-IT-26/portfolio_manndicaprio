@@ -47,196 +47,6 @@ musicToggle.addEventListener("click", (e) => {
 });
 
 /* =========================================
-   PROJECT REVIEW MODAL
-========================================= */
-
-const projectModal = document.getElementById("projectModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalGallery = document.getElementById("modalGallery");
-const modalClose = document.getElementById("modalClose");
-
-const reviewButtons = document.querySelectorAll(".review-project");
-
-
-/* =========================================
-   MASONRY GALLERY FUNCTION
-========================================= */
-
-function resizeGalleryItems() {
-
-    const rowHeight = 5;
-    const styles = getComputedStyle(modalGallery);
-    const gap = parseFloat(styles.rowGap);
-
-    modalGallery.querySelectorAll("img").forEach(img => {
-
-        const height = img.getBoundingClientRect().height;
-
-        if (height > 0) {
-
-            const span = Math.ceil(
-                (height + gap) / (rowHeight + gap)
-            );
-
-            img.style.gridRowEnd = `span ${span}`;
-
-        }
-
-    });
-
-}
-
-
-/* =========================================
-   BUKA MODAL
-========================================= */
-
-reviewButtons.forEach(button => {
-
-    button.addEventListener("click", (e) => {
-
-        e.preventDefault();
-
-        const title = button.dataset.title;
-
-        let images = [];
-
-        if (button.dataset.folder) {
-
-            const folder = button.dataset.folder;
-            const start = Number(button.dataset.start);
-            const end = Number(button.dataset.end);
-
-            for (let i = start; i <= end; i++) {
-                const extension = button.dataset.extension || ".png";
-                const prefix = button.dataset.prefix || "";
-
-                images.push(`${folder}${prefix}${i}${prefix ? ")" : ""}${extension}`);
-            }
-
-        } else {
-
-            images = (button.dataset.images || "")
-                .split("|")
-                .map(img => img.trim())
-                .filter(img => img !== "");
-
-        }           
-
-        modalTitle.textContent = title;
-        modalGallery.innerHTML = "";
-
-        images.forEach(src => {
-
-            if (!src.trim()) return;
-
-            const img = document.createElement("img");
-
-            img.src = src.trim();
-            img.alt = title;
-
-            img.addEventListener("load", resizeGalleryItems);
-
-            modalGallery.appendChild(img);
-
-        });
-
-        projectModal.classList.add("active");
-        document.body.classList.add("modal-open");
-
-        // Hitung ulang setelah modal tampil
-        requestAnimationFrame(resizeGalleryItems);
-
-    });
-
-});
-
-
-/* =========================================
-   RESPONSIVE MASONRY
-========================================= */
-
-window.addEventListener("resize", () => {
-
-    requestAnimationFrame(resizeGalleryItems);
-
-});
-
-
-/* =========================================
-   TUTUP MODAL
-========================================= */
-
-function closeProjectModal() {
-
-    projectModal.classList.remove("active");
-    document.body.classList.remove("modal-open");
-
-}
-
-modalClose.addEventListener("click", closeProjectModal);
-
-
-/* =========================================
-   TUTUP KETIKA KLIK AREA LUAR
-========================================= */
-
-projectModal.addEventListener("click", (e) => {
-
-    if (e.target === projectModal) {
-        closeProjectModal();
-    }
-
-});
-
-
-/* =========================================
-   TUTUP MENGGUNAKAN TOMBOL ESCAPE
-========================================= */
-
-document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape") {
-        closeProjectModal();
-    }
-
-});
-
-// IMAGE LIGHTBOX
-const imageLightbox = document.getElementById("imageLightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxClose = document.getElementById("lightboxClose");
-
-// Klik gambar untuk memperbesar
-modalGallery.addEventListener("click", function(e) {
-    if (e.target.tagName === "IMG") {
-        lightboxImage.src = e.target.src;
-        imageLightbox.classList.add("active");
-    }
-});
-
-// Tutup lightbox
-function closeLightbox() {
-    imageLightbox.classList.remove("active");
-    lightboxImage.src = "";
-}
-
-lightboxClose.addEventListener("click", closeLightbox);
-
-imageLightbox.addEventListener("click", function(e) {
-    if (e.target === imageLightbox) {
-        closeLightbox();
-    }
-});
-
-// Tombol ESC
-document.addEventListener("keydown", function(e) {
-    if (e.key === "Escape") {
-        closeLightbox();
-    }
-});
-
-/* =========================================
    CINEMATIC INTRO CONTROLLER
 ========================================= */
 
@@ -264,6 +74,154 @@ if (cinematicIntro && enterPortfolio) {
     });
 
 }
+/* =========================================
+   PROJECT DETAIL MODAL
+========================================= */
+
+const projectModal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalMeta = document.getElementById("modalMeta");
+const modalMainImg = document.getElementById("modalMainImg");
+const modalThumbs = document.getElementById("modalThumbs");
+const modalClose = document.getElementById("modalClose");
+
+const imageLightbox = document.getElementById("imageLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+
+let currentImages = [];
+let currentIndex = 0;
+
+// Buat daftar alamat foto dari data-* di kartu
+function buildImageList(card) {
+    const folder = card.dataset.folder;
+    const prefix = card.dataset.prefix || "";
+    const extension = card.dataset.extension || ".png";
+    const start = Number(card.dataset.start || 1);
+    const end = Number(card.dataset.end || start);
+    const list = [];
+
+    for (let i = start; i <= end; i++) {
+        list.push(`${folder}${prefix}${i}${prefix ? ")" : ""}${extension}`);
+    }
+    return list;
+}
+
+// Tampilkan satu foto sebagai foto utama
+function showMainImage(index) {
+    currentIndex = index;
+    modalMainImg.src = currentImages[index];
+    modalThumbs.querySelectorAll("img").forEach((thumb, i) => {
+        thumb.classList.toggle("active", i === index);
+    });
+}
+
+// Buka foto besar (lightbox)
+function openLightbox(index) {
+    currentIndex = index;
+    lightboxImage.src = currentImages[index];
+    imageLightbox.classList.add("active");
+}
+
+// Pindah foto di lightbox (-1 = sebelumnya, 1 = berikutnya)
+function stepLightbox(direction) {
+    const total = currentImages.length;
+    const next = (currentIndex + direction + total) % total;
+    lightboxImage.src = currentImages[next];
+    showMainImage(next);
+}
+
+function closeProjectModal() {
+    projectModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+}
+
+function closeLightbox() {
+    imageLightbox.classList.remove("active");
+    lightboxImage.src = "";
+}
+
+// Setiap kartu: tambah info jumlah foto + buka modal saat diklik
+document.querySelectorAll(".project-card").forEach(card => {
+    if (!card.dataset.folder) return;
+
+    const images = buildImageList(card);
+
+    // Tulisan kecil "N foto" di kartu
+    const hint = document.createElement("div");
+    hint.className = "card-hint";
+    hint.innerHTML = `<i class='bx bx-images'></i> ${images.length} foto`;
+    card.insertBefore(hint, card.querySelector(".project-meta"));
+
+    card.addEventListener("click", () => {
+        currentImages = images;
+
+        modalTitle.textContent = card.querySelector("h3").textContent;
+        modalDesc.textContent = card.querySelector("p").textContent;
+
+        const meta = card.querySelector(".project-meta");
+        modalMeta.innerHTML = meta ? meta.innerHTML : "";
+
+        // Kotak harga (hanya di jendela detail)
+        if (card.dataset.price) {
+            modalMeta.insertAdjacentHTML("beforeend", `
+                <div class="meta-box">
+                    <div class="meta-label">Price</div>
+                    <div class="meta-value">${card.dataset.price}</div>
+                </div>
+            `);
+        }
+
+        modalThumbs.innerHTML = "";
+        images.forEach((src, i) => {
+            const thumb = document.createElement("img");
+            thumb.src = src;
+            thumb.alt = `Foto ${i + 1}`;
+            thumb.loading = "lazy";
+            thumb.addEventListener("click", () => openLightbox(i));
+            modalThumbs.appendChild(thumb);
+        });
+
+        showMainImage(0);
+        modalMainImg.alt = modalTitle.textContent;
+        projectModal.classList.add("active");
+        document.body.classList.add("modal-open");
+    });
+});
+
+// Klik foto utama: perbesar
+modalMainImg.addEventListener("click", () => openLightbox(currentIndex));
+
+// Tombol tutup
+modalClose.addEventListener("click", closeProjectModal);
+lightboxClose.addEventListener("click", closeLightbox);
+
+// Tombol panah
+lightboxPrev.addEventListener("click", (e) => { e.stopPropagation(); stepLightbox(-1); });
+lightboxNext.addEventListener("click", (e) => { e.stopPropagation(); stepLightbox(1); });
+
+// Klik area gelap di luar konten
+projectModal.addEventListener("click", (e) => {
+    if (e.target === projectModal) closeProjectModal();
+});
+imageLightbox.addEventListener("click", (e) => {
+    if (e.target === imageLightbox) closeLightbox();
+});
+
+// Keyboard: Esc menutup, panah kiri/kanan pindah foto
+document.addEventListener("keydown", (e) => {
+    const lightboxOpen = imageLightbox.classList.contains("active");
+
+    if (e.key === "Escape") {
+        if (lightboxOpen) closeLightbox();
+        else closeProjectModal();
+    }
+    if (lightboxOpen && e.key === "ArrowLeft") stepLightbox(-1);
+    if (lightboxOpen && e.key === "ArrowRight") stepLightbox(1);
+});
 
 /* =====================================
    CUSTOM CURSOR ANIMATION
@@ -533,4 +491,116 @@ if (contactForm) {
             formStatus.textContent = "Network error. Please try again.";
         }
     });
+}
+
+/* =========================================
+   SKILLS: BAR TERISI SAAT TERLIHAT
+========================================= */
+
+const skillsSection = document.getElementById("skills");
+
+if (skillsSection) {
+
+    // Nama level mengikuti angka
+    function levelName(value) {
+        if (value >= 75) return "Advanced";
+        if (value >= 45) return "Intermediate";
+        return "Beginner";
+    }
+
+    // Baca data-level tiap kartu, lalu atur bar dan tulisannya
+    skillsSection.querySelectorAll(".skill-card").forEach(card => {
+        const value = Math.min(100, Math.max(0, Number(card.dataset.level) || 0));
+
+        card.querySelector(".skill-fill").style.setProperty("--level", value + "%");
+        card.querySelector(".skill-label").textContent = levelName(value) + " · " + value + "%";
+    });
+
+    // Bar terisi saat section terlihat
+    if ("IntersectionObserver" in window) {
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    skillsSection.classList.add("in-view");
+                    skillsObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.25 });
+
+        skillsObserver.observe(skillsSection);
+    } else {
+        skillsSection.classList.add("in-view");
+    }
+}
+
+/* =========================================
+   MOBILE NAVBAR ACTIVE SECTION
+========================================= */
+
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+const mobileNavSections = document.querySelectorAll(
+    '#home, #about, #skills, #services, #projects, #contact'
+);
+
+// Mengatur menu yang sedang aktif
+function setActiveMobileLink(sectionId) {
+
+    mobileNavLinks.forEach((link) => {
+
+        const isActive =
+            link.getAttribute('href') === `#${sectionId}`;
+
+        link.classList.toggle('active', isActive);
+
+        if (isActive) {
+            link.setAttribute('aria-current', 'page');
+        } else {
+            link.removeAttribute('aria-current');
+        }
+
+    });
+
+}
+
+// Ketika navbar diklik
+mobileNavLinks.forEach((link) => {
+
+    link.addEventListener('click', () => {
+
+        const targetId = link.getAttribute('href').slice(1);
+
+        setActiveMobileLink(targetId);
+
+    });
+
+});
+
+// Mengikuti section yang sedang terlihat
+if ('IntersectionObserver' in window && mobileNavSections.length) {
+
+    const mobileSectionObserver = new IntersectionObserver((entries) => {
+
+        const visibleSections = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleSections.length) {
+
+            setActiveMobileLink(
+                visibleSections[0].target.id
+            );
+
+        }
+
+    }, {
+        root: null,
+        rootMargin: '-25% 0px -45% 0px',
+        threshold: [0.1, 0.25, 0.5, 0.75]
+    });
+
+    mobileNavSections.forEach((section) => {
+        mobileSectionObserver.observe(section);
+    });
+
 }
